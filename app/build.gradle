@@ -1,0 +1,52 @@
+apply plugin: 'com.android.application'
+
+
+def buildVersionName(){
+    return "1.1.1"
+}
+
+android {
+
+    android.applicationVariants.all { variant ->
+         variant.outputs.all {
+                 outputFileName = "Bed_${buildVersionName()}.apk"
+             }
+    }
+
+    compileSdkVersion 26
+    defaultConfig {
+        applicationId "com.xiao.wisdom.bed"
+        minSdkVersion 16
+        targetSdkVersion 26
+        versionCode 1
+        versionName "${buildVersionName()}"
+        testInstrumentationRunner "android.support.test.runner.AndroidJUnitRunner"
+    }
+    buildTypes {
+        release {
+            minifyEnabled false
+            proguardFiles getDefaultProguardFile('proguard-android.txt'), 'proguard-rules.pro'
+        }
+    }
+}
+
+dependencies {
+    implementation fileTree(include: ['*.jar'], dir: 'libs')
+    implementation 'com.android.support:appcompat-v7:26.1.0'
+    implementation 'com.android.support.constraint:constraint-layout:1.1.2'
+    testImplementation 'junit:junit:4.12'
+    androidTestImplementation 'com.android.support.test:runner:1.0.2'
+    androidTestImplementation 'com.android.support.test.espresso:espresso-core:3.0.2'
+    compile 'com.squareup.okhttp3:okhttp:3.8.1'
+    compile 'com.nostra13.universalimageloader:universal-image-loader:1.9.4'
+    implementation files('libs/fastjson-1.1.28.jar')
+    compile 'com.android.support:design:26.1.0'
+    compile 'pub.devrel:easypermissions:1.0.1'
+    implementation 'cn.bingoogolapple:bga-qrcode-zbar:1.2.5'
+    compile('cn.qqtheme.framework:WheelPicker:1.5.6') {
+        exclude group: 'com.android.support'
+    }
+    compile 'org.greenrobot:eventbus:3.1.1'
+    compile 'de.hdodenhof:circleimageview:2.2.0'
+    compile 'com.github.bumptech.glide:glide:3.7.0'
+}

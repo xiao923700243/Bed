@@ -1,0 +1,183 @@
+<resources>
+    <string name="app_name">Bed</string>
+    <string name="logo_name">Yehuo Link</string>
+
+    <!-- public-->
+    <string name="public_service_error">Server exception, please try again later</string>
+    <string name="public_network_error">Please check the network</string>
+    <string name="public_cancel_msg">Cancel</string>
+    <string name="public_confirm_msg">Confirm</string>
+
+    <!-- LoginActivity-->
+    <string name="login_user_textview_hiht">Please enter a 6-12 account number</string>
+    <string name="login_password__textview_hiht">Please enter a 6-12 digit password</string>
+    <string name="login_login_button_text">Sign in</string>
+    <string name="login_register_button_text">Register</string>
+    <string name="login_activity_toast_user_error">Please enter the correct account number (6-12 digits)</string>
+    <string name="login_activity_toast_password_error">Please enter the correct password (6-12 digits)</string>
+    <string name="login_activity_toast_login_success">Login Successful</string>
+    <string name="login_activity_toast_login_error">Login failed, account or password is incorrect</string>
+    <string name="login_activity_dialog_msg_login">Logging in...</string>
+
+    <!--  HomeActivity-->
+    <string name="home_activity_wait_user_info">Getting information...</string>
+    <string name="home_activbity_send_error_off_line_msg">Send failed, device is not online</string>
+    <string name="home_activbity_send_error_unbind_msg">Send failed, user and device are not bound</string>
+    <string name="home_activity_apply_permission_msg">Scanning the QR code requires permission to turn on the camera and astigmatism</string>
+    <string name="home_activity_permission_error">Please agree to the permission to use</string>
+    <string name="home_xml_left_menu">Menu</string>
+    <string name="home_xml_right_menu">Add</string>
+
+    <!-- Menu List -->
+    <string name="menu_list_1">Reset Password</string>
+    <string name="menu_list_2">App tutorial</string>
+    <string name="menu_list_3">Sign out</string>
+
+    <!-- ApSettingActivity -->
+    <string name="ap_activity_conn_msg">Connecting device WIFI...</string>
+    <string name="ap_activity_ssid_error_msg">Please enter the Wifi name</string>
+    <string name="ap_activity_password_error_msg">Please enter a Wifi password</string>
+    <string name="ap_activity_ap_error_msg">Please connect the device to WiFi before operating</string>
+    <string name="ap_activity_device_connect_msg">Connecting to the device for the [_number] time...</string>
+    <string name="ap_activity_device_connect_success">Device connection succeeded</string>
+    <string name="ap_activity_config_ssid_msg">[_number] time configuration SSID...</string>
+    <string name="ap_activity_device_connect_error_msg">Device connection failed, please try again</string>
+    <string name="ap_activity_config_ssid_success">Hotspot SSID setup is complete...</string>
+    <string name="ap_activity_config_password_msg">The [_number] configuration password...</string>
+    <string name="ap_activity_config_password_success">Hotspot password setting is complete...</string>
+    <string name="ap_activity_config_wifi_success">Device hotspot configuration is complete</string>
+    <string name="ap_activity_wait_device_online_msg">Wait for the device to go online...</string>
+    <string name="ap_activity_config_ssid_number_msg">Trying to configure SSID for the [_number] time...</string>
+    <string name="ap_activity_config_ssid_error">Failed to configure SSID, please try again</string>
+    <string name="ap_activity_config_password_number_msg">Trying the [_number] configuration password...</string>
+    <string name="ap_activity_config_password_error">Failed to configure password, please try again</string>
+    <string name="ap_activity_device_online_success">The device went online successfully.</string>
+    <string name="ap_activity_device_online_error">The device failed to go online. Please try again.</string>
+    <string name="ap_activity_no_search_wifi_msg">Device WIFI not found, please try again</string>
+    <string name="ap_activity_connect_wifi_success">Connected device WIFI successfully</string>
+    <string name="ap_activity_connect_wifi_error">Fail to connect to device WIFI, please try again</string>
+    <string name="ap_activity_open_wifi_msg">Opening WIFI...</string>
+    <string name="ap_activity_search_wifi_msg">Looking for device WIFI...</string>
+    <string name="ap_activity_connect_wifi_msg">Connecting device WIFI...</string>
+    <string name="ap_activity_device_connect_success_msg">Device connection succeeded</string>
+    <string name="ap_xml_left_menu">Back</string>
+    <string name="ap_xml_title">Add device</string>
+    <string name="ap_xml_right_menu">Switch WiFi</string>
+    <string name="ap_xml_wifi_account_textview_msg">WiFi account</string>
+    <string name="ap_xml_wifi_account_edittext_hiht_msg">Please enter a home WiFi account</string>
+    <string name="ap_xml_wifi_password_textview_msg">WiFi password</string>
+    <string name="ap_xml_wifi_password_edittext_hiht_msg">Please enter your home WiFi password</string>
+    <string name="ap_xml_device_status_msg">Turn on the power and confirm that the device is in the standby state and the green light is on. Press the upper right corner to switch WiFi, select hewei</string>
+    <string name="ap_xml_device_lamp_on_msg">Green light is on</string>
+    <string name="ap_xml_next_msg">Next</string>
+
+    <!-- BedDetailsActivity -->
+    <string name="details_activity_auto_calibration_msg">Automatic pressure correction</string>
+    <string name="details_activity_direction_convert_msg">Switch positive and negative</string>
+    <string name="details_activity_life_time_start_msg">Motor life test begins</string>
+    <string name="details_activity_life_time_end_msg">End of motor life test</string>
+    <string name="details_unbind_dislog_msg">Unbinding...</string>
+    <string name="details_device_name_input_error_msg">Please enter a device name</string>
+    <string name="details_update_device_info_msg">Under revision....</string>
+    <string name="details_update_success_msg">Successfully modified</string>
+    <string name="details_update_error_msg">Modification failed, unknown reason</string>
+    <string name="details_update_account_unavailable_error_msg">The modification failed and the user does not exist.</string>
+    <string name="details_update_device_unavailable_error_msg">The modification failed, the user is not bound to the device.</string>
+    <string name="details_unbind_success_msg">Untied successfully</string>
+    <string name="details_unbind_error_msg">Untie failed, error reason: binding relationship does not exist</string>
+    <string name="details_xml_left_menu">Back</string>
+    <string name="details_xml_title">Device details</string>
+    <string name="details_xml_right_menu">debugging</string>
+    <string name="details_xml_device_info_sn_msg">Equipment SN number</string>
+    <string name="details_xml_device_info_name_msg">Device name</string>
+    <string name="details_xml_device_info_nickname_msg">Please enter the device nickname</string>
+    <string name="details_xml_device_temper_msg">temperature</string>
+    <string name="details_xml_device_humidity_msg">humidity</string>
+    <string name="details_xml_save_msg">Save</string>
+    <string name="details_xml_unbind_msg">Unbind</string>
+
+    <!-- BindActivity -->
+    <string name="bind_activity_smartbed_msg">Smart Bed</string>
+    <string name="bind_activity_smartlock_msg">Smart Lock</string>
+    <string name="bind_activity_smartcabinet_msg">Smart Cabinet</string>
+    <string name="bind_activity_device_sn_input_error_msg">Please enter the device SN number</string>
+    <string name="bind_activity_device_nickname_input_error_msg">Please enter a device name</string>
+    <string name="bind_activity_device_name_input_error_msg">Please select a device type</string>
+    <string name="bind_activity_device_type_input_error_msg">Please select the device communication method</string>
+    <string name="bind_activity_bind_device_msg">Binding...</string>
+    <string name="bind_activity_device_config_wifi_msg">The binding is successful. Please configure the home WiFi for the device.</string>
+    <string name="bind_activity_bind_error_msg">Binding failed, error message: device has been bound</string>
+    <string name="bind_xml_left_menu">Back</string>
+    <string name="bind_xml_title">Add device</string>
+    <string name="bind_xml_device_sn_text_msg">Equipment SN number</string>
+    <string name="bind_xml_device_sn_hiht_msg">Please enter the device SN number</string>
+    <string name="bind_xml_device_cstname_text_msg">Device name</string>
+    <string name="bind_xml_device_cstname_hiht_msg">Please enter a device name</string>
+    <string name="bind_xml_device_name_text_msg">Equipment type</string>
+    <string name="bind_xml_device_name_hiht_msg">Please select a device type</string>
+    <string name="bind_xml_device_type_text_msg">Communication</string>
+    <string name="bind_xml_device_type_hiht_msg">Please select device communication mode.</string>
+    <string name="bind_xml_device_type_wifi_msg">WIFI</string>
+    <string name="bind_xml_device_type_gps_msg">GPS</string>
+    <string name="bind_xml_next_msg">Next</string>
+
+    <!-- ChangePwdActivity -->
+    <string name="change_activity_password_input_error_msg">Please enter 6-12 valid passwords.</string>
+    <string name="change_activity_re_password_input_error_msg">Please confirm the password.</string>
+    <string name="change_activity_checkcode_input_error_msg">Please input verification code.</string>
+    <string name="change_activity_submit_data_msg">Data is being submitted.</string>
+    <string name="change_activity_update_success_msg">Amend the success</string>
+    <string name="change_activity_update_account_unavailable_error_msg">Modification failed, error message: user not registered</string>
+    <string name="change_activity_update_checkcode_unavailable_error_msg">Modification failed: error code: mismatch or failure of authentication code.</string>
+    <string name="change_activity_update_error_msg">Modification failed, unknown cause</string>
+    <string name="change_xml_left_menu">Back</string>
+    <string name="change_xml_title">Change Password</string>
+    <string name="change_xml_new_password_hiht_msg">Please enter a new password.</string>
+    <string name="change_xml_re_password_hiht_msg">Please confirm the password.</string>
+    <string name="change_xml_checkcode_hiht_msg">Please input verification code.</string>
+    <string name="change_xml_button_confirm_msg">Confirm</string>
+
+    <!-- QRScanActivity -->
+    <string name="scan_activity_code_content_msg">QR code content:</string>
+    <string name="scan_activity_code_error_msg">Invalid QR code</string>
+    <string name="scan_activity_code_permission_error_msg">Camera open error, please check if authorization</string>
+    <string name="scan_xml_code_input_msg">Put the barcode into the box to automatically scan</string>
+    <string name="scan_xml_code_action_msg">Automatically scan the QR code/bar code in the box</string>
+
+    <!-- RegisterActivity -->
+    <string name="register_activity_account_input_error_msg">Please enter a 6-12 account number</string>
+    <string name="register_activity_password_input_error_msg">Please enter a 6-12 digit password</string>
+    <string name="register_activity_checkcode_input_error_msg">Please enter the correct check code</string>
+    <string name="register_activity_register_msg">Registering....</string>
+    <string name="register_activity_success_msg">Registration is successful, please login</string>
+    <string name="register_activity_re_register_error_msg">Registration failed, error message: User has been registered</string>
+    <string name="register_activity_checkcode_unavailable_error_msg">Registration failed, error message: verification code does not match or has expired</string>
+    <string name="register_activity_error_msg">Registration failed, unknown reason</string>
+    <string name="register_xml_left_menu">Back</string>
+    <string name="register_xml_title">Register</string>
+    <string name="register_xml_account_hiht_msg">Please enter user name</string>
+    <string name="register_xml_passowrd_hiht_msg">Please enter your password</string>
+    <string name="register_xml_checkcode_hiht_msg">Please enter verification code</string>
+    <string name="register_xml_button_msg">Register</string>
+
+    <!-- BindAlert -->
+    <string name="bind_alert_title_msg">Binding</string>
+    <string name="bind_alert_content_msg">Whether it is bound to the device, other users will not be able to use the device after binding</string>
+
+    <!-- ExitAlert -->
+    <string name="exit_alert_title_msg">Logout</string>
+    <string name="exit_alert_content_msg">Whether to log out of the user, log out</string>
+
+    <!-- UnBindAlert -->
+    <string name="unbind_alert_title_msg">Untied</string>
+    <string name="unbind_alert_content_msg">Whether to unbind the device, after unbinding, you cannot continue to control the device!</string>
+
+    <!-- WaitDialog-->
+    <string name="wait_xml_text_hiht_msg">Configuring hotspots...</string>
+
+    <!-- HomeAdapter -->
+    <string name="home_adapter_temper_msg">temperature:</string>
+    <string name="home_adapter_humidity_msg">humidity:</string>
+    <string name="home_adapter_device_status_on_line_msg">[Online]</string>
+    <string name="home_adapter_device_status_off_line_msg">[offline]</string>
+</resources>

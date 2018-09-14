@@ -1,0 +1,61 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:orientation="vertical"
+    android:background="@drawable/message_background"
+    android:layout_width="300dp"
+    android:layout_height="180dp">
+
+    <TextView
+        android:id="@+id/title_"
+        android:textSize="14sp"
+        android:textColor="#666666"
+        android:layout_gravity="center_horizontal"
+        android:gravity="center_vertical"
+        android:layout_width="wrap_content"
+        android:layout_height="50dp" />
+    <View
+        android:background="#c9c9c9"
+        android:layout_width="match_parent"
+        android:layout_height="1px"></View>
+
+    <TextView
+        android:id="@+id/message_"
+        android:textColor="#000000"
+        android:paddingLeft="10dp"
+        android:paddingRight="10dp"
+        android:gravity="center_vertical"
+        android:layout_width="match_parent"
+        android:layout_height="80dp" />
+    <View
+        android:background="#c9c9c9"
+        android:layout_width="match_parent"
+        android:layout_height="1px"></View>
+    <LinearLayout
+        android:orientation="horizontal"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+
+        <TextView
+            android:id="@+id/cancel_"
+            android:text="@string/public_cancel_msg"
+            android:textColor="#000000"
+            android:textSize="14sp"
+            android:gravity="center"
+            android:layout_weight="1"
+            android:layout_width="0dp"
+            android:layout_height="match_parent" />
+        <View
+            android:background="#c9c9c9"
+            android:layout_width="1px"
+            android:layout_height="match_parent"></View>
+        <TextView
+            android:id="@+id/confirm_"
+            android:text="@string/public_confirm_msg"
+            android:textColor="#000000"
+            android:textSize="14sp"
+            android:gravity="center"
+            android:layout_weight="1"
+            android:layout_width="0dp"
+            android:layout_height="match_parent" />
+    </LinearLayout>
+</LinearLayout>

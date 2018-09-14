@@ -1,0 +1,281 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:orientation="vertical"
+    android:fitsSystemWindows="true"
+    android:background="@color/home_title_background"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
+
+
+    <LinearLayout
+        android:background="#ffffff"
+        android:orientation="vertical"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+        <RelativeLayout
+            android:background="@color/home_title_background"
+            android:layout_width="match_parent"
+            android:layout_height="@dimen/title_bar_height">
+            <TextView
+                android:textSize="12sp"
+                android:onClick="onExit"
+                android:text="@string/details_xml_left_menu"
+                android:textColor="#FFFFFF"
+                android:layout_marginLeft="10dp"
+                android:gravity="center"
+                android:layout_width="wrap_content"
+                android:layout_height="match_parent" />
+
+            <TextView
+                android:layout_centerVertical="true"
+                android:layout_centerHorizontal="true"
+                android:textSize="14sp"
+                android:text="@string/details_xml_title"
+                android:textColor="#ffffff"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content" />
+
+            <TextView
+                android:textSize="12sp"
+                android:text="@string/details_xml_right_menu"
+                android:onClick="onDebug"
+                android:textColor="#FFFFFF"
+                android:layout_marginRight="10dp"
+                android:gravity="center"
+                android:layout_alignParentRight="true"
+                android:layout_width="wrap_content"
+                android:layout_height="match_parent" />
+        </RelativeLayout>
+
+        <ScrollView
+            android:layout_width="match_parent"
+            android:layout_height="match_parent">
+            <LinearLayout
+                android:orientation="vertical"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent">
+                <ImageView
+                    android:scaleType="fitXY"
+                    android:src="@mipmap/ic_add_image"
+                    android:layout_width="match_parent"
+                    android:layout_height="200dp" />
+
+                <LinearLayout
+                    android:background="#ffffff"
+                    android:layout_width="match_parent"
+                    android:orientation="horizontal"
+                    android:layout_height="60dp">
+                    <TextView
+                        android:text="@string/details_xml_device_info_sn_msg"
+                        android:textSize="12sp"
+                        android:gravity="center_vertical"
+                        android:paddingLeft="10dp"
+                        android:layout_width="wrap_content"
+                        android:layout_height="match_parent" />
+                    <TextView
+                        android:id="@+id/devide_devid"
+                        android:gravity="right|center_vertical"
+                        android:textSize="12sp"
+                        android:paddingRight="10dp"
+                        android:paddingLeft="10dp"
+                        android:maxLines="1"
+                        android:singleLine="true"
+                        android:background="#ffffffff"
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent" />
+                </LinearLayout>
+
+                <View
+                    android:background="#c9c9c9"
+                    android:layout_width="match_parent"
+                    android:layout_height="1px"></View>
+
+
+                <LinearLayout
+                    android:background="#ffffff"
+                    android:layout_width="match_parent"
+                    android:orientation="horizontal"
+                    android:layout_height="60dp">
+                    <TextView
+                        android:text="@string/details_xml_device_info_name_msg"
+                        android:textSize="12sp"
+                        android:gravity="center_vertical"
+                        android:paddingLeft="10dp"
+                        android:layout_width="wrap_content"
+                        android:layout_height="match_parent" />
+                    <EditText
+                        android:id="@+id/devide_cstname"
+                        android:gravity="right|center_vertical"
+                        android:hint="@string/details_xml_device_info_nickname_msg"
+                        android:textSize="12sp"
+                        android:paddingRight="10dp"
+                        android:paddingLeft="10dp"
+                        android:maxLines="1"
+                        android:singleLine="true"
+                        android:background="#ffffffff"
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent" />
+                </LinearLayout>
+                <View
+                    android:background="#c9c9c9"
+                    android:layout_width="match_parent"
+                    android:layout_height="1px"></View>
+                <!--
+                    <LinearLayout
+                        android:background="#ffffff"
+                        android:layout_width="match_parent"
+                        android:orientation="horizontal"
+                        android:layout_height="60dp">
+                        <TextView
+                            android:text="设备类型"
+                            android:textSize="12sp"
+                            android:gravity="center_vertical"
+                            android:paddingLeft="10dp"
+                            android:layout_width="wrap_content"
+                            android:layout_height="match_parent" />
+                        <TextView
+                            android:id="@+id/devide_devname"
+                            android:onClick="onDeviceName"
+                            android:gravity="right|center_vertical"
+                            android:textSize="12sp"
+                            android:paddingRight="10dp"
+                            android:paddingLeft="10dp"
+                            android:maxLines="1"
+                            android:singleLine="true"
+                            android:background="#ffffffff"
+                            android:layout_width="match_parent"
+                            android:layout_height="match_parent" />
+                    </LinearLayout>
+                    <View
+                        android:background="#c9c9c9"
+                        android:layout_width="match_parent"
+                        android:layout_height="1px"></View>
+
+
+
+                <LinearLayout
+                    android:background="#ffffff"
+                    android:layout_width="match_parent"
+                    android:orientation="horizontal"
+                    android:layout_height="60dp">
+                    <TextView
+                        android:text="设备通讯方式"
+                        android:textSize="12sp"
+                        android:gravity="center_vertical"
+                        android:paddingLeft="10dp"
+                        android:layout_width="wrap_content"
+                        android:layout_height="match_parent" />
+                    <TextView
+                        android:id="@+id/devide_devtype"
+                        android:onClick="onDeviceType"
+                        android:gravity="right|center_vertical"
+                        android:textSize="12sp"
+                        android:paddingRight="10dp"
+                        android:paddingLeft="10dp"
+                        android:maxLines="1"
+                        android:singleLine="true"
+                        android:background="#ffffffff"
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent" />
+                </LinearLayout>
+                <View
+                    android:background="#c9c9c9"
+                    android:layout_width="match_parent"
+                    android:layout_height="1px"></View>
+                    -->
+
+                <LinearLayout
+                    android:background="#ffffff"
+                    android:layout_width="match_parent"
+                    android:orientation="horizontal"
+                    android:layout_height="60dp">
+                    <TextView
+                        android:text="@string/details_xml_device_temper_msg"
+                        android:textSize="12sp"
+                        android:gravity="center_vertical"
+                        android:paddingLeft="10dp"
+                        android:layout_width="wrap_content"
+                        android:layout_height="match_parent" />
+                    <TextView
+                        android:id="@+id/device_temper"
+                        android:gravity="right|center_vertical"
+                        android:textSize="12sp"
+                        android:paddingRight="10dp"
+                        android:paddingLeft="10dp"
+                        android:maxLines="1"
+                        android:singleLine="true"
+                        android:background="#ffffffff"
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent" />
+                </LinearLayout>
+                <View
+                    android:background="#c9c9c9"
+                    android:layout_width="match_parent"
+                    android:layout_height="1px"></View>
+
+
+                <LinearLayout
+                    android:background="#ffffff"
+                    android:layout_width="match_parent"
+                    android:orientation="horizontal"
+                    android:layout_height="60dp">
+                    <TextView
+                        android:text="@string/details_xml_device_humidity_msg"
+                        android:textSize="12sp"
+                        android:gravity="center_vertical"
+                        android:paddingLeft="10dp"
+                        android:layout_width="wrap_content"
+                        android:layout_height="match_parent" />
+                    <TextView
+                        android:id="@+id/device_humidity"
+                        android:gravity="right|center_vertical"
+                        android:textSize="12sp"
+                        android:paddingRight="10dp"
+                        android:paddingLeft="10dp"
+                        android:maxLines="1"
+                        android:singleLine="true"
+                        android:background="#ffffffff"
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent" />
+                </LinearLayout>
+                <View
+                    android:background="#c9c9c9"
+                    android:layout_width="match_parent"
+                    android:layout_height="1px"></View>
+
+                <LinearLayout
+                    android:background="#ffffff"
+                    android:orientation="vertical"
+                    android:layout_marginBottom="50dp"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent">
+                    <Button
+                        android:background="@drawable/button_background"
+                        android:layout_marginLeft="10dp"
+                        android:layout_marginRight="10dp"
+                        android:layout_marginTop="20dp"
+                        android:textSize="14sp"
+                        android:textColor="#ffffff"
+                        android:text="@string/details_xml_save_msg"
+                        android:onClick="onSave"
+                        android:layout_width="match_parent"
+                        android:layout_height="50dp" />
+
+                    <Button
+                        android:background="@drawable/button_unbind"
+                        android:layout_marginLeft="10dp"
+                        android:layout_marginRight="10dp"
+                        android:layout_marginTop="20dp"
+                        android:textSize="14sp"
+                        android:textColor="#000000"
+                        android:text="@string/details_xml_unbind_msg"
+                        android:onClick="unBindDervice"
+                        android:layout_width="match_parent"
+                        android:layout_height="50dp" />
+                </LinearLayout>
+            </LinearLayout>
+        </ScrollView>
+
+    </LinearLayout>
+
+</LinearLayout>
