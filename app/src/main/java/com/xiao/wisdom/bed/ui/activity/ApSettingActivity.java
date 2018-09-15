@@ -207,12 +207,11 @@ public class ApSettingActivity extends BaseActivity {
                     showConfigDialogMsg(getResString(R.string.ap_activity_config_password_msg).replace("[_number]",pwdCount+""));
                     sendMsgDevice(BedUtils.CMD_SEND_PASSWORD_END.replace("[password]",wifiPassword.getText().toString().trim()));
                     mHandler.sendEmptyMessageDelayed(0x06,3000);
-                }else if(result.trim().startsWith(BedUtils.RSP_PASSWORD_END)){
+                }else if(result.trim().startsWith(BedUtils.RSP_PASSWORD_END) || result.trim().startsWith(BedUtils.RSP_SSID_PASSWORD_CONFIG_END)){
+                    closeConnection();
                     mHandler.removeMessages(0x06);
                     showConfigDialogMsg(getResString(R.string.ap_activity_config_password_success));
-                }else if(result.trim().startsWith(BedUtils.RSP_SSID_PASSWORD_CONFIG_END)){
                     showToast(R.string.ap_activity_config_wifi_success);
-                    closeConnection();
                     showConfigDialogMsg(getResString(R.string.ap_activity_wait_device_online_msg));
                     getDeviceState(0);
                     mHandler.sendEmptyMessageDelayed(0x09,30*1000);

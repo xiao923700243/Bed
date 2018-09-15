@@ -98,7 +98,7 @@ public class BedService extends Service {
 
     public void getDevStats(final String deviceid,final Handler handler){
         final String user = ShareUtils.getInstance(this).getUser();
-        NetApi.getDevStats(user,deviceid,new ResultCallBack<GetDevStatsResult>(){
+        NetApi.getUserAllDevStats(user,new ResultCallBack<GetUserAllDevStatsResult>(){
             @Override
             public void onFailure(int statusCode, Request request, Exception e) {
                 super.onFailure(statusCode, request, e);
@@ -106,10 +106,25 @@ public class BedService extends Service {
             }
 
             @Override
-            public void onSuccess(int statusCode, Headers headers, GetDevStatsResult model) {
+            public void onSuccess(int statusCode, Headers headers, GetUserAllDevStatsResult model) {
                 super.onSuccess(statusCode, headers, model);
                 if(model.status.equals("ok")){
-                    handler.sendEmptyMessage(0x08);
+                    if(model!=null && model.data!=null && model.data.size()>0){
+                        boolean isSuccess = false;
+                        for(int i=0;i<model.data.size();i++){
+                            if(model.data.get(i).devid.trim().equals(deviceid)){
+                                isSuccess = true;
+                                break;
+                            }
+                        }
+                        if(isSuccess){
+                            handler.sendEmptyMessage(0x08);
+                        }else{
+                            handler.sendEmptyMessage(0x07);
+                        }
+                    }else{
+                        handler.sendEmptyMessage(0x07);
+                    }
                 }else{
                     handler.sendEmptyMessage(0x07);
                 }
