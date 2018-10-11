@@ -19,7 +19,9 @@ import com.xiao.wisdom.bed.base.BaseActivity;
 import com.xiao.wisdom.bed.bean.Event;
 import com.xiao.wisdom.bed.bean.GetUserAllDevStatsResult;
 import com.xiao.wisdom.bed.utils.ShareUtils;
+import com.xiao.wisdom.bed.view.ConfigErrorAlert;
 import com.xiao.wisdom.bed.view.ExitAlert;
+import com.xiao.wisdom.bed.view.ScrollViewListView;
 
 import org.greenrobot.eventbus.EventBus;
 import org.greenrobot.eventbus.Subscribe;
@@ -37,7 +39,8 @@ public class HomeActivity extends BaseActivity implements EasyPermissions.Permis
     private DrawerLayout drawerLayout;
     private NavigationView navigationView;
     private HomeAdapter homeAdapter;
-    private ListView listView;
+    private ScrollViewListView listView;
+    private TextView errorTextView;
     private boolean isInitData = true;
     private int delayTime = 500;
     private ExitAlert exitAlert;
@@ -56,6 +59,7 @@ public class HomeActivity extends BaseActivity implements EasyPermissions.Permis
         navigationView.setNavigationItemSelectedListener(this);
         listView = findViewById(R.id.list_view);
         userName = navigationView.getHeaderView(0).findViewById(R.id.user_);
+        errorTextView = findViewById(R.id.home_error_text);
     }
 
 
@@ -120,6 +124,13 @@ public class HomeActivity extends BaseActivity implements EasyPermissions.Permis
                 break;
             case 0x02:
                 GetUserAllDevStatsResult model = (GetUserAllDevStatsResult) msg.obj;
+                if(model == null || model.data == null || model.data.size()<=0){
+                    errorTextView.setVisibility(View.VISIBLE);
+                    listView.setVisibility(View.GONE);
+                }else{
+                    errorTextView.setVisibility(View.GONE);
+                    listView.setVisibility(View.VISIBLE);
+                }
                 if(homeAdapter == null){
                     hideWait();
                     isInitData = false;
@@ -207,6 +218,7 @@ public class HomeActivity extends BaseActivity implements EasyPermissions.Permis
                 startActivity(ChangePwdActivity.class);
                 break;
             case R.id.nav_item2: //App使用教程
+                startActivity(InstructionsActivity.class);
                 break;
             case R.id.nav_item3: //退出登录
                 if(exitAlert !=null){

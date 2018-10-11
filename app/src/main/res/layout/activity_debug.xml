@@ -1,0 +1,171 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:orientation="vertical"
+    android:fitsSystemWindows="true"
+    android:background="@color/home_title_background"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/title_bar_height">
+        <LinearLayout
+            android:onClick="onExit"
+            android:layout_marginLeft="10dp"
+            android:layout_centerVertical="true"
+            android:orientation="horizontal"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content">
+            <TextView
+                android:textSize="@dimen/menu_text_font_size"
+                android:text="@string/debug_xml_left_menu"
+                android:textColor="#FFFFFF"
+                android:layout_marginLeft="10dp"
+                android:gravity="center"
+                android:layout_width="wrap_content"
+                android:layout_height="match_parent" />
+        </LinearLayout>
+
+        <TextView
+            android:layout_centerVertical="true"
+            android:layout_centerHorizontal="true"
+            android:textSize="@dimen/title_text_font_size"
+            android:text="@string/debug_xml_title"
+            android:textColor="#ffffff"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content" />
+    </RelativeLayout>
+
+    <ScrollView
+        android:background="#ffffff"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+        <LinearLayout
+            android:orientation="vertical"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent">
+
+            <ImageView
+                android:layout_marginTop="30dp"
+                android:layout_marginBottom="30dp"
+                android:src="@mipmap/ic_logo"
+                android:layout_gravity="center_horizontal"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content" />
+
+            <TextView
+                android:layout_marginLeft="20dp"
+                android:textSize="20sp"
+                android:text="@string/debug_xml_pressure_test_msg"
+                android:layout_width="match_parent"
+                android:layout_height="50dp" />
+            <EditText
+                android:layout_marginRight="20dp"
+                android:layout_marginLeft="20dp"
+                android:inputType="number"
+                android:id="@+id/pressure_value_"
+                android:hint="@string/debug_xml_pressure_hiht_msg"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent" />
+
+            <Button
+                android:background="@drawable/button_background"
+                android:layout_marginLeft="10dp"
+                android:layout_marginRight="10dp"
+                android:textSize="14sp"
+                android:textColor="#ffffff"
+                android:text="@string/debug_xml_pressure_start_msg"
+                android:onClick="onPressure"
+                android:layout_width="match_parent"
+                android:layout_height="50dp" />
+
+
+            <TextView
+                android:layout_marginLeft="20dp"
+                android:layout_marginTop="40dp"
+                android:textSize="20sp"
+                android:text="@string/debug_xml_direction_msg"
+                android:layout_width="match_parent"
+                android:layout_height="50dp" />
+
+            <Button
+                android:background="@drawable/button_background"
+                android:layout_marginLeft="10dp"
+                android:layout_marginRight="10dp"
+                android:textSize="14sp"
+                android:textColor="#ffffff"
+                android:text="@string/debug_xml_direction_button_msg"
+                android:onClick="onDirectionSwitch"
+                android:layout_width="match_parent"
+                android:layout_height="50dp" />
+
+            <TextView
+                android:layout_marginLeft="20dp"
+                android:layout_marginTop="40dp"
+                android:textSize="20sp"
+                android:text="@string/debug_xml_lifetime_test_msg"
+                android:layout_width="match_parent"
+                android:layout_height="50dp" />
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:orientation="horizontal"
+                android:layout_marginLeft="10dp"
+                android:layout_marginRight="10dp"
+                android:layout_marginBottom="30dp"
+                android:layout_height="50dp">
+                <Button
+                    android:onClick="onStartLifeTime"
+                    android:background="@drawable/button_background"
+                    android:text="@string/debug_xml_lifetime_start_msg"
+                    android:layout_marginRight="5dp"
+                    android:layout_width="0dp"
+                    android:layout_weight="1"
+                    android:textSize="14sp"
+                    android:textColor="#ffffff"
+                    android:layout_height="match_parent" />
+                <Button
+                    android:text="@string/debug_xml_lifetime_end_msg"
+                    android:onClick="onEndLifeTime"
+                    android:background="@drawable/button_background"
+                    android:layout_marginLeft="5dp"
+                    android:layout_width="0dp"
+                    android:layout_weight="1"
+                    android:textSize="14sp"
+                    android:textColor="#ffffff"
+                    android:layout_height="match_parent" />
+            </LinearLayout>
+
+
+            <TextView
+                android:layout_marginLeft="20dp"
+                android:layout_marginTop="10dp"
+                android:textSize="20sp"
+                android:text="@string/debug_xml_lefetime_test_time_msg"
+                android:layout_width="match_parent"
+                android:layout_height="50dp" />
+
+            <EditText
+                android:layout_marginRight="20dp"
+                android:layout_marginLeft="20dp"
+                android:id="@+id/lifetime_value_"
+                android:hint="@string/debug_xml_lifetime_hiht_msg"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent" />
+
+            <Button
+                android:background="@drawable/button_background"
+                android:layout_marginLeft="10dp"
+                android:layout_marginRight="10dp"
+                android:textSize="14sp"
+                android:textColor="#ffffff"
+                android:text="@string/debug_xml_lefttime_time_button_msg"
+                android:onClick="onUpdateTime"
+                android:layout_width="match_parent"
+                android:layout_marginBottom="30dp"
+                android:layout_height="50dp" />
+
+        </LinearLayout>
+    </ScrollView>
+
+</LinearLayout>

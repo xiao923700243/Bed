@@ -1,6 +1,6 @@
 <resources>
     <string name="app_name">智能Bed</string>
-    <string name="logo_name">野火物联</string>
+    <string name="logo_name">Herway</string>
 
     <!-- public-->
     <string name="public_service_error">服务器异常,请稍后重试</string>
@@ -26,7 +26,8 @@
     <string name="home_activity_apply_permission_msg">扫描二维码需要打开相机和散光灯的权限</string>
     <string name="home_activity_permission_error">请同意权限后使用</string>
     <string name="home_xml_left_menu">菜单</string>
-    <string name="home_xml_right_menu">添加</string>
+    <string name="home_xml_right_menu">添加设备</string>
+    <string name="home_xml_error_text_msg">未添加设备</string>
 
     <!-- Menu List -->
     <string name="menu_list_1">重置密码</string>
@@ -35,6 +36,7 @@
 
     <!-- ApSettingActivity -->
     <string name="ap_activity_conn_msg">正在连接设备WIFI...</string>
+    <string name="ap_activity_config_init_msg">正在为设备配置热点...</string>
     <string name="ap_activity_ssid_error_msg">请输入Wifi名称</string>
     <string name="ap_activity_password_error_msg">请输入Wifi密码</string>
     <string name="ap_activity_ap_error_msg">请连接设备WiFi后再操作</string>
@@ -46,13 +48,13 @@
     <string name="ap_activity_config_password_msg">第[_number]次配置密码...</string>
     <string name="ap_activity_config_password_success">热点密码设置完成...</string>
     <string name="ap_activity_config_wifi_success">设备热点配置完成</string>
-    <string name="ap_activity_wait_device_online_msg">等待设备上线...</string>
+    <string name="ap_activity_wait_device_online_msg">网络配置完成，等待设备上线...</string>
     <string name="ap_activity_config_ssid_number_msg">正在尝试第[_number]次配置SSID...</string>
     <string name="ap_activity_config_ssid_error">配置SSID失败，请重试</string>
     <string name="ap_activity_config_password_number_msg">正在尝试第[_number]次配置密码...</string>
     <string name="ap_activity_config_password_error">配置密码失败，请重试</string>
     <string name="ap_activity_device_online_success">设备上线成功</string>
-    <string name="ap_activity_device_online_error">设备上线失败，请重试</string>
+    <string name="ap_activity_device_online_error">设备上线失败，请确认设备已切换到网络设置状态，并且确认WIFI名和密码是否正确，然后请重试！</string>
     <string name="ap_activity_no_search_wifi_msg">未找到设备WIFI，请重试</string>
     <string name="ap_activity_connect_wifi_success">连接设备WIFI成功</string>
     <string name="ap_activity_connect_wifi_error">连接设备WIFI失败，请重试</string>
@@ -60,6 +62,7 @@
     <string name="ap_activity_search_wifi_msg">正在查找设备WIFI...</string>
     <string name="ap_activity_connect_wifi_msg">正在连接设备WIFI...</string>
     <string name="ap_activity_device_connect_success_msg">设备连接成功</string>
+    <string name="ap_activity_device_online_error_msg">请确认设备已切换到网络设置状态，并且确认WIFI名和密码是否正确！</string>
     <string name="ap_xml_left_menu">返回</string>
     <string name="ap_xml_title">添加设备</string>
     <string name="ap_xml_right_menu">切换WiFi</string>
@@ -72,7 +75,7 @@
     <string name="ap_xml_next_msg">下一步</string>
 
     <!-- BedDetailsActivity -->
-    <string name="details_activity_auto_calibration_msg">自动压力矫正</string>
+    <string name="details_activity_auto_calibration_msg">压力矫正</string>
     <string name="details_activity_direction_convert_msg">切换正反转</string>
     <string name="details_activity_life_time_start_msg">电机寿命测试开始</string>
     <string name="details_activity_life_time_end_msg">电机寿命测试结束</string>
@@ -95,6 +98,8 @@
     <string name="details_xml_device_humidity_msg">湿度</string>
     <string name="details_xml_save_msg">保存</string>
     <string name="details_xml_unbind_msg">解除绑定</string>
+    <string name="details_activity_input_null_error_msg">请输入密码</string>
+    <string name="details_activity_input_error_msg">密码验证失败，请重试</string>
 
     <!-- BindActivity -->
     <string name="bind_activity_smartbed_msg">智能床</string>
@@ -180,4 +185,37 @@
     <string name="home_adapter_humidity_msg">湿度：</string>
     <string name="home_adapter_device_status_on_line_msg">[在线]</string>
     <string name="home_adapter_device_status_off_line_msg">[离线]</string>
+
+    <!-- ConfigErrorAlert -->
+    <string name="config_alert_error_title">失败</string>
+
+    <!-- inputAlert -->
+    <string name="input_alert_edittext_hiht_msg">请输入管理员密码</string>
+    <string name="input_alert_title_msg">身份校验</string>
+
+    <!-- DebugActivity-->
+    <string name="debug_xml_left_menu">退出</string>
+    <string name="debug_xml_title">调试</string>
+    <string name="debug_xml_pressure_test_msg">压力娇正：</string>
+    <string name="debug_xml_pressure_hiht_msg">请输入压力测试值，最长5位数,XXXX牛顿如（1500）</string>
+    <string name="debug_xml_pressure_start_msg">发送压力值</string>
+    <string name="debug_xml_direction_msg">切换正反转：</string>
+    <string name="debug_xml_direction_button_msg">切换</string>
+    <string name="debug_xml_lifetime_test_msg">电机寿命测试：</string>
+    <string name="debug_xml_lefetime_test_time_msg">测试时间间隔：</string>
+    <string name="debug_xml_lifetime_hiht_msg">请输入点击测试时间，最长5位数,XXXX秒如（600）</string>
+    <string name="debug_xml_lifetime_start_msg">开始电机寿命测试</string>
+    <string name="debug_xml_lifetime_end_msg">结束电机寿命测试</string>
+    <string name="debug_xml_lefttime_time_button_msg">修改间隔时间</string>
+    <string name="debug_activity_pressure_val_error1_msg">请输入压力值</string>
+    <string name="debug_activity_pressure_val_error2_msg">请输入有效的压力值</string>
+    <string name="debug_activity_lifetime_val_error1_msg">请输入间隔时间</string>
+    <string name="debug_activity_lifetime_val_error2_msg">请输入有效的间隔时间</string>
+    <string name="debug_activity_lifetime_val_error3_msg">请先结束电机寿命测试任务</string>
+    <string name="debug_activity_lifetime_val_error4_msg">请先开始电机寿命测试任务</string>
+
+
+    <!-- InstructionsActivity -->
+    <string name="is_xml_left_menu">返回</string>
+    <string name="is_xml_title_msg">使用说明</string>
 </resources>

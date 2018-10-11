@@ -10,7 +10,9 @@ import android.os.Bundle;
 import android.os.Handler;
 import android.os.IBinder;
 import android.os.Message;
+import android.support.annotation.CallSuper;
 import android.support.annotation.Nullable;
+import android.support.v4.view.ViewPager;
 import android.util.Log;
 import android.view.View;
 import android.view.Window;
@@ -28,12 +30,13 @@ import com.xiao.wisdom.bed.net.NetApi;
 import com.xiao.wisdom.bed.service.BedService;
 import com.xiao.wisdom.bed.utils.BedUtils;
 
+import java.lang.ref.WeakReference;
+
 /**
  * Created by Administrator on 2018/8/2.
  */
 
 public abstract class BaseActivity extends Activity {
-
     /**Handler消息传递**/
     protected Handler mHandler = new Handler(){
         @Override
@@ -41,6 +44,7 @@ public abstract class BaseActivity extends Activity {
             onMessage(msg);
         }
     };
+
     protected BedService bedService;
     private ServiceConnection connection = new ServiceConnection(){
         @Override
@@ -69,8 +73,6 @@ public abstract class BaseActivity extends Activity {
         initView();
         //设置数据
         initData();
-
-
     }
 
     @Override

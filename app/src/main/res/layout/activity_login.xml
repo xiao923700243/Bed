@@ -82,7 +82,7 @@
                     android:id="@+id/register_"
                     android:textColor="#3F85F4"
                     android:text="@string/login_register_button_text"
-                    android:textSize="12sp"
+                    android:textSize="@dimen/menu_text_font_size"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content" />
 

@@ -54,7 +54,7 @@ public class QRScanActivity extends BaseActivity implements QRCodeView.Delegate{
 
     @Override
     public void onScanQRCodeSuccess(String result) {
-        showToast(getResString(R.string.scan_activity_code_content_msg)+result);
+        //showToast(getResString(R.string.scan_activity_code_content_msg)+result);
         SoundPlayUtils.play();
         if(result!=null && result.length()>0){
             Bundle bundle = new Bundle();

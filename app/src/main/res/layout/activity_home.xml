@@ -18,7 +18,7 @@
             android:layout_height="@dimen/title_bar_height">
             <TextView
                 android:text="@string/home_xml_left_menu"
-                android:textSize="12sp"
+                android:textSize="@dimen/menu_text_font_size"
                 android:textColor="#ffffff"
                 android:layout_marginLeft="15dp"
                 android:gravity="center"
@@ -29,28 +29,48 @@
                 android:text="@string/logo_name"
                 android:layout_centerHorizontal="true"
                 android:layout_centerVertical="true"
-                android:textSize="14sp"
-                android:padding="15dp"
+                android:textSize="@dimen/title_text_font_size"
                 android:textColor="#FFFFFF"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content" />
-            <TextView
-                android:onClick="onQRScanActivity"
-                android:layout_alignParentRight="true"
-                android:layout_marginRight="15dp"
-                android:gravity="center"
-                android:text="@string/home_xml_right_menu"
-                android:textSize="12sp"
-                android:textColor="#ffffff"
-                android:layout_marginLeft="15dp"
-                android:layout_width="wrap_content"
-                android:layout_height="match_parent" />
         </RelativeLayout>
-        <ListView
-            android:id="@+id/list_view"
+        <ScrollView
             android:background="#ffffff"
             android:layout_width="match_parent"
-            android:layout_height="match_parent"></ListView>
+            android:layout_height="match_parent">
+            <LinearLayout
+                android:orientation="vertical"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent">
+                <com.xiao.wisdom.bed.view.ScrollViewListView
+                    android:id="@+id/list_view"
+                    android:visibility="gone"
+                    android:background="#ffffff"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content" />
+
+                <TextView
+                    android:id="@+id/home_error_text"
+                    android:textSize="28sp"
+                    android:textColor="#c9c9c9"
+                    android:gravity="center"
+                    android:text="@string/home_xml_error_text_msg"
+                    android:layout_width="match_parent"
+                    android:layout_height="180dp" />
+                <Button
+                    android:layout_width="match_parent"
+                    android:background="@drawable/button_background"
+                    android:text="@string/home_xml_right_menu"
+                    android:textSize="@dimen/menu_text_font_size"
+                    android:textColor="#ffffff"
+                    android:onClick="onQRScanActivity"
+                    android:layout_marginTop="10dp"
+                    android:layout_marginLeft="10dp"
+                    android:layout_marginRight="10dp"
+                    android:layout_marginBottom="10dp"
+                    android:layout_height="50dp" />
+            </LinearLayout>
+        </ScrollView>
     </LinearLayout>
 
     <android.support.design.widget.NavigationView

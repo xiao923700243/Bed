@@ -28,17 +28,19 @@ public class BedUtils {
     public static final String CMD_DIRECTION_CONVERT = "CMD_DIRECTION_CONVERT";
     public static final String CMD_LED_ON = "CMD_LED_ON";
     public static final String CMD_LED_OFF = "CMD_LED_OFF";
-    public static final String CMD_PRESSURE_TEST_XXXXX = "CMD_PRESSURE_TEST_XXXXX_N_OK";
+    public static final String CMD_PRESSURE_TEST = "CMD_PRESSURE_TEST_[val]_#*#*$OK";
     public static final String CMD_PRESSURE_AUTO_CALIBRATION = "CMD_PRESSURE_AUTO_CALIBRATION";
     public static final String CMD_READ_ALL = "CMD_READ_ALL";
     public static final String CMD_LIFE_TIME_TEST_START = "CMD_LIFE_TIME_TEST_START";
     public static final String CMD_LIFE_TIME_TEST_FINISH = "CMD_LIFE_TIME_TEST_FINISH";
+    public static final String CMD_LIFE_TIME_VAL = "CMD_LIFE_TIME_TEST_[val]_#*#*$OK";
     public static final String CMD_SEND_TIME_XX_XX_XX_XX_XX_XX = "CMD_SEND_TIME_YY_mm_DD_HH_MM_SS";
     public static final String RSP_SSID_NAME_END = "RSP_SSID_NAME_END";
     public static final String RSP_PASSWORD_END = "RSP_PASSWORD_END";
     public static final String CMD_SEND_SSID_NAME_END = "CMD_SSID_NAME_[ssid]_#*#*$OK";
     public static final String CMD_SEND_PASSWORD_END = "CMD_PASSWORD_[password]_#*#*$OK";
     public static final String RSP_SSID_PASSWORD_CONFIG_END = "RSP_SSID_PASSWORD_CONFIG_END";
+    public static final String CHECK_PASSWORD = "herway";
 
     /**
      * 判断网络状态

@@ -2,6 +2,7 @@ package com.xiao.wisdom.bed.adapter;
 
 import android.content.Context;
 import android.content.Intent;
+import android.graphics.Color;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.LayoutInflater;
@@ -45,10 +46,8 @@ public class HomeAdapter extends BaseAdapter{
     @Override
     public int getCount() {
         if(result!=null && result.data!=null && result.data.size()>0){
-            //Log.i("HomeAdapter","返回Count = "+result.data.size());
             return result.data.size();
         }
-        //Log.i("HomeAdapter","返回Count = 0");
         return 0;
     }
 
@@ -104,8 +103,13 @@ public class HomeAdapter extends BaseAdapter{
         });
         holder.devNameIcon.setImageResource(getSouresIdByName(result.data.get(i).devname));
         holder.cstname.setText(result.data.get(i).cstname+" "+getOnline(result.data.get(i).online));
-        holder.temperature.setText(getResString(R.string.home_adapter_temper_msg)+result.data.get(i).temper);
-        holder.humidity.setText(getResString(R.string.home_adapter_humidity_msg)+result.data.get(i).humidity);
+        if(result.data.get(i).temper<40){
+            holder.temperature.setTextColor(Color.parseColor("#FFCC33"));
+        }else{
+            holder.temperature.setTextColor(Color.parseColor("#FF0000"));
+        }
+        holder.temperature.setText(result.data.get(i).temper+"");
+        holder.humidity.setText(result.data.get(i).humidity+"");
 
         LampBean lamp = ShareUtils.getInstance(context).getLampAction(result.data.get(i).devid);
         if(lamp != null){

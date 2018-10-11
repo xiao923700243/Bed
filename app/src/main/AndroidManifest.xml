@@ -39,6 +39,10 @@
         <activity android:name=".ui.activity.BedDetailsActivity"
             android:windowSoftInputMode="adjustUnspecified|stateHidden"
             ></activity>
+        <activity android:name=".ui.activity.DebugActivity"
+            android:windowSoftInputMode="adjustUnspecified|stateHidden"
+            ></activity>
+        <activity android:name=".ui.activity.InstructionsActivity" />
 
         <service android:name=".service.BedService"></service>
     </application>

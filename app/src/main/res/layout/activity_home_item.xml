@@ -5,91 +5,114 @@
     android:layout_height="match_parent">
 
     <LinearLayout
-        android:orientation="horizontal"
         android:layout_width="0dp"
         android:layout_weight="1"
-        android:layout_height="80dp">
+        android:orientation="horizontal"
+        android:layout_height="150dp">
         <de.hdodenhof.circleimageview.CircleImageView
+            android:layout_marginLeft="10dp"
             android:layout_gravity="center_vertical"
-            android:layout_marginLeft="10dp"
-            xmlns:app="http://schemas.android.com/apk/res-auto"
             android:id="@+id/devidename_"
-            android:layout_width="70dp"
-            android:layout_height="70dp"
-            android:src="@mipmap/ic_dev_bed"
-            app:civ_border_width="1dp"
-            app:civ_border_color="#99cc00"/>
+            android:layout_width="120dp"
+            android:layout_height="120dp"
+            android:src="@mipmap/ic_dev_bed"/>
         <LinearLayout
-            android:orientation="vertical"
-            android:layout_marginLeft="10dp"
             android:layout_gravity="center_vertical"
             android:layout_width="match_parent"
+            android:orientation="vertical"
+            android:layout_marginLeft="10dp"
             android:layout_height="wrap_content">
             <TextView
                 android:id="@+id/cstname_"
-                android:textSize="12sp"
-                android:text="设备：我的床"
+                android:textSize="18sp"
                 android:layout_marginBottom="5dp"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content" />
-            <TextView
-                android:id="@+id/temperature_"
-                android:textSize="12sp"
-                android:textColor="#999999"
-                android:text="温度：30℃"
+            <LinearLayout
+                android:orientation="horizontal"
                 android:layout_marginTop="5dp"
+                android:layout_marginBottom="5dp"
                 android:layout_width="wrap_content"
-                android:layout_height="wrap_content" />
-            <TextView
-                android:id="@+id/humidity_"
-                android:textSize="12sp"
-                android:textColor="#999999"
-                android:text="湿度：50%"
+                android:layout_height="wrap_content">
+                <TextView
+                    android:textSize="16sp"
+                    android:text="@string/home_adapter_temper_msg"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content" />
+                <TextView
+                    android:id="@+id/temperature_"
+                    android:textSize="16sp"
+                    android:textColor="#FFCC33"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content" />
+            </LinearLayout>
+
+            <LinearLayout
+                android:orientation="horizontal"
+                android:layout_marginTop="5dp"
+                android:layout_marginBottom="5dp"
                 android:layout_width="wrap_content"
-                android:layout_height="wrap_content" />
+                android:layout_height="wrap_content">
+                <TextView
+                    android:textSize="16sp"
+                    android:text="@string/home_adapter_humidity_msg"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content" />
+                <TextView
+                    android:id="@+id/humidity_"
+                    android:textSize="16sp"
+                    android:textColor="#339933"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content" />
+            </LinearLayout>
         </LinearLayout>
     </LinearLayout>
 
-    <RelativeLayout
+    <LinearLayout
         android:layout_width="0dp"
         android:layout_weight="1"
+        android:orientation="vertical"
         android:layout_height="match_parent">
         <LinearLayout
             android:orientation="horizontal"
-            android:layout_centerVertical="true"
-            android:layout_centerHorizontal="true"
-            android:gravity="center_vertical"
+            android:layout_gravity="center_horizontal"
             android:layout_width="wrap_content"
-            android:layout_height="match_parent">
+            android:layout_marginTop="10dp"
+            android:layout_marginBottom="5dp"
+            android:layout_height="60dp">
             <ImageView
                 android:id="@+id/up_"
-                android:layout_marginRight="5dp"
                 android:src="@mipmap/ic_up"
-                android:layout_width="32dp"
-                android:layout_height="match_parent" />
-
-            <ImageView
-                android:id="@+id/down_"
-                android:layout_marginLeft="5dp"
                 android:layout_marginRight="5dp"
-                android:src="@mipmap/ic_down"
-                android:layout_width="32dp"
-                android:layout_height="match_parent" />
+                android:layout_width="60dp"
+                android:layout_height="60dp" />
 
             <ImageView
                 android:id="@+id/stop_"
-                android:layout_marginLeft="5dp"
-                android:layout_marginRight="5dp"
                 android:src="@mipmap/ic_stop"
-                android:layout_width="32dp"
-                android:layout_height="match_parent" />
-
+                android:layout_marginLeft="5dp"
+                android:layout_width="60dp"
+                android:layout_height="60dp" />
+        </LinearLayout>
+        
+        <LinearLayout
+            android:layout_width="wrap_content"
+            android:layout_gravity="center_horizontal"
+            android:layout_marginTop="5dp"
+            android:layout_marginBottom="10dp"
+            android:layout_height="60dp">
+            <ImageView
+                android:id="@+id/down_"
+                android:layout_marginRight="5dp"
+                android:src="@mipmap/ic_down"
+                android:layout_width="60dp"
+                android:layout_height="60dp" />
             <ImageView
                 android:id="@+id/lamp_"
                 android:layout_marginLeft="5dp"
                 android:src="@mipmap/lamp_inactive"
-                android:layout_width="32dp"
-                android:layout_height="match_parent" />
+                android:layout_width="60dp"
+                android:layout_height="60dp" />
         </LinearLayout>
-    </RelativeLayout>
+    </LinearLayout>
 </LinearLayout>

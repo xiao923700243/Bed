@@ -15,6 +15,7 @@ import com.xiao.wisdom.bed.BedApplication;
 import com.xiao.wisdom.bed.bean.BindUserDeviceResult;
 import com.xiao.wisdom.bed.bean.ChengeDeviceInfoResult;
 import com.xiao.wisdom.bed.bean.ChengeUserPasswordResult;
+import com.xiao.wisdom.bed.bean.Event;
 import com.xiao.wisdom.bed.bean.GetDevStatsResult;
 import com.xiao.wisdom.bed.bean.GetUserAllDevStatsResult;
 import com.xiao.wisdom.bed.bean.LoginUserResult;
@@ -24,6 +25,8 @@ import com.xiao.wisdom.bed.bean.disBindUserDeviceResult;
 import com.xiao.wisdom.bed.net.NetApi;
 import com.xiao.wisdom.bed.net.base.ResultCallBack;
 import com.xiao.wisdom.bed.utils.ShareUtils;
+
+import org.greenrobot.eventbus.EventBus;
 
 import okhttp3.Headers;
 import okhttp3.Request;
@@ -96,13 +99,15 @@ public class BedService extends Service {
         });
     }
 
-    public void getDevStats(final String deviceid,final Handler handler){
+    public void getDevStats(final String deviceid,final Handler handler,final boolean state){
         final String user = ShareUtils.getInstance(this).getUser();
         NetApi.getUserAllDevStats(user,new ResultCallBack<GetUserAllDevStatsResult>(){
             @Override
             public void onFailure(int statusCode, Request request, Exception e) {
                 super.onFailure(statusCode, request, e);
-                handler.sendEmptyMessage(0x07); //服务器异常或手机网络异常
+                if(state){
+                    handler.sendEmptyMessage(0x07); //服务器异常或手机网络异常
+                }
             }
 
             @Override
@@ -112,21 +117,29 @@ public class BedService extends Service {
                     if(model!=null && model.data!=null && model.data.size()>0){
                         boolean isSuccess = false;
                         for(int i=0;i<model.data.size();i++){
-                            if(model.data.get(i).devid.trim().equals(deviceid)){
+                            if(model.data.get(i).devid.trim().equals(deviceid) && model.data.get(i).online == 1){
                                 isSuccess = true;
                                 break;
                             }
                         }
                         if(isSuccess){
-                            handler.sendEmptyMessage(0x08);
+                            if(state) {
+                                handler.sendEmptyMessage(0x08);
+                            }
                         }else{
-                            handler.sendEmptyMessage(0x07);
+                            if(state) {
+                                handler.sendEmptyMessage(0x07);
+                            }
                         }
                     }else{
-                        handler.sendEmptyMessage(0x07);
+                        if(state) {
+                            handler.sendEmptyMessage(0x07);
+                        }
                     }
                 }else{
-                    handler.sendEmptyMessage(0x07);
+                    if(state){
+                        handler.sendEmptyMessage(0x07);
+                    }
                 }
             }
         });
@@ -134,7 +147,13 @@ public class BedService extends Service {
 
     public void bindUserDevice(final String devid,final String devname,final String devtype,final String cstname,final Handler handler){
         String user = ShareUtils.getInstance(this).getUser();
-        NetApi.bindUserDevice(user,devid,devname,devtype,cstname,new ResultCallBack<BindUserDeviceResult>(){
+        String utfCstName = cstname;
+        try{
+            utfCstName = new String(cstname.getBytes("ISO-8859-1"),"utf-8");
+        }catch (Exception e){
+            e.printStackTrace();
+        }
+        NetApi.bindUserDevice(user,devid,devname,devtype,utfCstName,new ResultCallBack<BindUserDeviceResult>(){
             @Override
             public void onFailure(int statusCode, Request request, Exception e) {
                 super.onFailure(statusCode, request, e);
@@ -155,7 +174,6 @@ public class BedService extends Service {
 
     public void getUserAllDevStats(final Handler handler){
         String user = ShareUtils.getInstance(this).getUser();
-        //String user = "13631525717";
         NetApi.getUserAllDevStats(user,new ResultCallBack<GetUserAllDevStatsResult>(){
             @Override
             public void onFailure(int statusCode, Request request, Exception e) {
@@ -167,6 +185,7 @@ public class BedService extends Service {
             public void onSuccess(int statusCode, Headers headers, GetUserAllDevStatsResult model) {
                 super.onSuccess(statusCode, headers, model);
                 handler.sendMessage(obtainMessage(0x02,model));
+                EventBus.getDefault().post(new Event.DevStateEvent(model));
             }
         });
     }

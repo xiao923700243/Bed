@@ -18,7 +18,7 @@ public class GetDevStatsResult {
         public int nlight;
         public float temper;
         public float humidity;
-        public long lefttsetnum;
+        public int lefttestflag;
         public String lastcmd;
         public int cmdstats;
         public String cmdtime;

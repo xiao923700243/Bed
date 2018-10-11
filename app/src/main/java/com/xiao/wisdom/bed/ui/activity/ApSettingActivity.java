@@ -15,6 +15,7 @@ import android.widget.CheckBox;
 import android.widget.CompoundButton;
 import android.widget.EditText;
 import android.widget.RadioButton;
+import android.widget.Toast;
 
 import com.xiao.wisdom.bed.R;
 import com.xiao.wisdom.bed.base.BaseActivity;
@@ -23,6 +24,7 @@ import com.xiao.wisdom.bed.bean.LoginUserResult;
 import com.xiao.wisdom.bed.utils.ApSettingThread;
 import com.xiao.wisdom.bed.utils.BedUtils;
 import com.xiao.wisdom.bed.utils.ShareUtils;
+import com.xiao.wisdom.bed.view.ConfigErrorAlert;
 import com.xiao.wisdom.bed.view.WaitDialog;
 
 import org.greenrobot.eventbus.EventBus;
@@ -50,6 +52,8 @@ public class ApSettingActivity extends BaseActivity {
     private WaitDialog configDialog;
     private WaitDialog deployDialog;
     private DeployThread deployThread;
+    private ConfigErrorAlert errorAlert;
+    private boolean needGetDevState = true;
 
     @Override
     public int intiLayout() {
@@ -133,6 +137,7 @@ public class ApSettingActivity extends BaseActivity {
             configDialog = new WaitDialog(this,R.style.Dialog);
         }
         configDialog.show();
+        showConfigDialogMsg(getResString(R.string.ap_activity_config_init_msg));
         connectThread = null;
         if(connectThread == null){
             connectThread = new ConnectThread();
@@ -145,19 +150,26 @@ public class ApSettingActivity extends BaseActivity {
         mHandler.postDelayed(new Runnable() {
             @Override
             public void run() {
-                bedService.getDevStats(device_sn,mHandler);
+                bedService.getDevStats(device_sn,mHandler,needGetDevState);
             }
         },delay);
     }
 
     @Override
     protected void onDestroy() {
+        needGetDevState =false;
         super.onDestroy();
-        mHandler.removeCallbacksAndMessages(null);
     }
 
     public void onExit(View v){
         this.finish();
+    }
+
+    private void showConfigErrorAlert(){
+        if(errorAlert == null){
+            errorAlert = new ConfigErrorAlert(ApSettingActivity.this,R.style.Dialog);
+        }
+        errorAlert.show();
     }
 
 
@@ -165,11 +177,11 @@ public class ApSettingActivity extends BaseActivity {
     public void onMessage(Message msg) {
         switch (msg.what){
             case 0x01:
-                int count = (int) msg.obj;
-                showConfigDialogMsg(getResString(R.string.ap_activity_device_connect_msg).replace("[_number]",count+""));
+                //int count = (int) msg.obj;
+                //showConfigDialogMsg(getResString(R.string.ap_activity_device_connect_msg).replace("[_number]",count+""));
                 break;
             case 0x02:
-                showConfigDialogMsg(getResString(R.string.ap_activity_device_connect_success));
+                //showConfigDialogMsg(getResString(R.string.ap_activity_device_connect_success));
                 //获取输入输出流
                 if(getDatapipeline()){
                     //开启消息读取
@@ -179,66 +191,68 @@ public class ApSettingActivity extends BaseActivity {
                     }
                     //发送指令
                     ssidCount = 1;
-                    showConfigDialogMsg(getResString(R.string.ap_activity_config_ssid_msg).replace("[_number]",ssidCount+""));
+                    //showConfigDialogMsg(getResString(R.string.ap_activity_config_ssid_msg).replace("[_number]",ssidCount+""));
                     sendMsgDevice(BedUtils.CMD_SEND_SSID_NAME_END.replace("[ssid]",wifiSSid.getText().toString().trim()));
                     mHandler.sendEmptyMessageDelayed(0x05,3000);
                 }else{ //输入输出流获取失败
                     dismissConfigDialog();
-                    if(deviceConnect!=null){
-                        try {
-                            deviceConnect.close();
-                        } catch (IOException e) {
-                            e.printStackTrace();
-                        }
-                    }
-                    showToast(R.string.ap_activity_device_connect_error_msg);
+                    //showToast(R.string.ap_activity_device_connect_error_msg);
+                    closeConnection();
+                    showConfigErrorAlert();
                 }
                 break;
             case 0x03:
                 dismissConfigDialog();
-                showToast(R.string.ap_activity_device_connect_error_msg);
+                closeConnection();
+                showConfigErrorAlert();
+                //showToast(R.string.ap_activity_device_connect_error_msg);
                 break;
-            case 0x04: // 收到消息
+            case 0x04: //收到消息
                 String result = (String) msg.obj;
                 if(result.trim().startsWith(BedUtils.RSP_SSID_NAME_END)){
-                    showConfigDialogMsg(getResString(R.string.ap_activity_config_ssid_success));
+                    //showConfigDialogMsg(getResString(R.string.ap_activity_config_ssid_success));
                     mHandler.removeMessages(0x05);
                     pwdCount = 1;
-                    showConfigDialogMsg(getResString(R.string.ap_activity_config_password_msg).replace("[_number]",pwdCount+""));
+                    //showConfigDialogMsg(getResString(R.string.ap_activity_config_password_msg).replace("[_number]",pwdCount+""));
                     sendMsgDevice(BedUtils.CMD_SEND_PASSWORD_END.replace("[password]",wifiPassword.getText().toString().trim()));
                     mHandler.sendEmptyMessageDelayed(0x06,3000);
                 }else if(result.trim().startsWith(BedUtils.RSP_PASSWORD_END) || result.trim().startsWith(BedUtils.RSP_SSID_PASSWORD_CONFIG_END)){
                     closeConnection();
                     mHandler.removeMessages(0x06);
-                    showConfigDialogMsg(getResString(R.string.ap_activity_config_password_success));
-                    showToast(R.string.ap_activity_config_wifi_success);
+                    //showConfigDialogMsg(getResString(R.string.ap_activity_config_password_success));
+                    //showToast(R.string.ap_activity_config_wifi_success);
                     showConfigDialogMsg(getResString(R.string.ap_activity_wait_device_online_msg));
+                    needGetDevState = true;
                     getDeviceState(0);
-                    mHandler.sendEmptyMessageDelayed(0x09,30*1000);
+                    mHandler.sendEmptyMessageDelayed(0x09,60*1000);
                 }
                 break;
             case 0x05:
                 if(ssidCount<3){
                     ssidCount = ssidCount+1;
-                    showConfigDialogMsg(getResString(R.string.ap_activity_config_ssid_number_msg).replace("[_number]",ssidCount+""));
+                    //showConfigDialogMsg(getResString(R.string.ap_activity_config_ssid_number_msg).replace("[_number]",ssidCount+""));
                     sendMsgDevice(BedUtils.CMD_SEND_SSID_NAME_END.replace("[ssid]",wifiSSid.getText().toString().trim()));
                     mHandler.sendEmptyMessageDelayed(0x05,3000);
                 }else{
                     dismissConfigDialog();
                     closeConnection();
-                    showToast(R.string.ap_activity_config_ssid_error);
+                    //showToast(R.string.ap_activity_config_ssid_error);
+                    //改成对话框提示错误信息
+                    showConfigErrorAlert();
                 }
                 break;
             case 0x06:
                 if(pwdCount<3){
                     pwdCount = pwdCount+1;
-                    showConfigDialogMsg(getResString(R.string.ap_activity_config_password_number_msg).replace("[_number]",pwdCount+""));
+                    //showConfigDialogMsg(getResString(R.string.ap_activity_config_password_number_msg).replace("[_number]",pwdCount+""));
                     sendMsgDevice(BedUtils.CMD_SEND_PASSWORD_END.replace("[password]",wifiPassword.getText().toString().trim()));
                     mHandler.sendEmptyMessageDelayed(0x06,3000);
                 }else{
                     dismissConfigDialog();
                     closeConnection();
-                    showToast(R.string.ap_activity_config_password_error);
+                    //showToast(R.string.ap_activity_config_password_error);
+                    //改成对话框提示错误信息
+                    showConfigErrorAlert();
                 }
                 break;
             case 0x07:
@@ -253,9 +267,13 @@ public class ApSettingActivity extends BaseActivity {
                 this.finish();
                 break;
             case 0x09:
+                needGetDevState = false;
                 dismissConfigDialog();
-                showToast(R.string.ap_activity_device_online_error);
+                //showToast(R.string.ap_activity_device_online_error);
+                //Toast.makeText(ApSettingActivity.this,getResString(R.string.ap_activity_device_online_error_msg),Toast.LENGTH_LONG).show();
                 mHandler.removeCallbacksAndMessages(null);
+                //改成对话框提示错误信息
+                showConfigErrorAlert();
                 break;
             case 0x10:
                 showDeployDialogMsg((String) msg.obj);
@@ -453,7 +471,7 @@ public class ApSettingActivity extends BaseActivity {
     class ConnectThread extends Thread{
         private boolean available = false;
         private int count = 0;
-        private String host = "192.168.1.168";//192.168.1.168
+        private String host = "192.168.1.142";//192.168.1.168
         private int port = 8080;
         @Override
         public void run() {
@@ -461,7 +479,7 @@ public class ApSettingActivity extends BaseActivity {
             while(!available && count<3){
                 try{
                     //发送进度
-                    mHandler.sendMessage(obtainMessage(0x01,count));
+                    //mHandler.sendMessage(obtainMessage(0x01,count));
                     deviceConnect.connect(new InetSocketAddress(host,port),3000);
                     available = true;
                     showL("设备连接成功");

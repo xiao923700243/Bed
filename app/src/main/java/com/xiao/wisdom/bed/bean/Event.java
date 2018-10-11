@@ -17,4 +17,11 @@ public class Event {
         public String cmd;
         public String devid;
     }
+
+    public static class DevStateEvent{
+        public GetUserAllDevStatsResult data;
+        public DevStateEvent(GetUserAllDevStatsResult data){
+            this.data = data;
+        }
+    }
 }

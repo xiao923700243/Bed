@@ -1,5 +1,6 @@
 package com.xiao.wisdom.bed.ui.activity;
 
+import android.os.Bundle;
 import android.os.Message;
 import android.text.TextUtils;
 import android.util.Log;
@@ -14,6 +15,7 @@ import com.xiao.wisdom.bed.utils.BedUtils;
 import com.xiao.wisdom.bed.view.ButtonMenu.BottomMenuFragment;
 import com.xiao.wisdom.bed.view.ButtonMenu.MenuItem;
 import com.xiao.wisdom.bed.view.ButtonMenu.MenuItemOnClickListener;
+import com.xiao.wisdom.bed.view.InputAlert;
 import com.xiao.wisdom.bed.view.UnBindAlert;
 
 import org.greenrobot.eventbus.EventBus;
@@ -131,6 +133,29 @@ public class BedDetailsActivity extends BaseActivity {
     }
     */
 
+    private InputAlert inputAlert;
+    public void onCheckIdentity(View v){
+        if(inputAlert == null){
+            inputAlert = new InputAlert(this, R.style.Dialog, new InputAlert.InputAlertEvent() {
+                @Override
+                public void onInputAlertEvent(int event) {
+                    if(event == 0x01){
+                        showToast(R.string.details_activity_input_null_error_msg);
+                    }else if(event == 0x02){
+                        showToast(R.string.details_activity_input_error_msg);
+                    }else if(event == 0x03){
+                        Bundle bundle = new Bundle();
+                        bundle.putString("devid",devid);
+                        startActivity(DebugActivity.class,bundle);
+                    }
+                }
+            });
+        }
+        if(inputAlert!=null && !inputAlert.isShowing()){
+            inputAlert.show();
+        }
+    }
+
     public void onDebug(View v){
         if(buttonMenu == null){
             buttonMenu = new BottomMenuFragment();
@@ -214,7 +239,15 @@ public class BedDetailsActivity extends BaseActivity {
             return;
         }
         showWaitMsg(getResString(R.string.details_update_device_info_msg));
-        bedService.chengeDeviceInfo(devid,BedUtils.detailsToDevName(BedDetailsActivity.this,getViewText(R.id.devide_devname)),getViewText(R.id.devide_devtype),getViewText(R.id.devide_cstname),mHandler);
+        String cstName = getViewText(R.id.devide_cstname);
+        try{
+            cstName = new String(cstName.getBytes("ISO-8859-1"),"utf-8");
+        }catch (Exception e){
+            e.printStackTrace();
+        }
+        String devName = BedUtils.detailsToDevName(BedDetailsActivity.this,"");
+        String devType = "WIFI";//getViewText(R.id.devide_devtype);
+        bedService.chengeDeviceInfo(devid,devName,devType,cstName,mHandler);
     }
 
     public void unBindDervice(View v){

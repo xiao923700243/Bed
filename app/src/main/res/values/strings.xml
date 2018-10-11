@@ -1,6 +1,6 @@
 <resources>
     <string name="app_name">Bed</string>
-    <string name="logo_name">Yehuo Link</string>
+    <string name="logo_name">Herway</string>
 
     <!-- public-->
     <string name="public_service_error">Server exception, please try again later</string>
@@ -26,7 +26,8 @@
     <string name="home_activity_apply_permission_msg">Scanning the QR code requires permission to turn on the camera and astigmatism</string>
     <string name="home_activity_permission_error">Please agree to the permission to use</string>
     <string name="home_xml_left_menu">Menu</string>
-    <string name="home_xml_right_menu">Add</string>
+    <string name="home_xml_right_menu">Add Device</string>
+    <string name="home_xml_error_text_msg">No device added</string>
 
     <!-- Menu List -->
     <string name="menu_list_1">Reset Password</string>
@@ -35,6 +36,7 @@
 
     <!-- ApSettingActivity -->
     <string name="ap_activity_conn_msg">Connecting device WIFI...</string>
+    <string name="ap_activity_config_init_msg">Configuring hotspots for devices...</string>
     <string name="ap_activity_ssid_error_msg">Please enter the Wifi name</string>
     <string name="ap_activity_password_error_msg">Please enter a Wifi password</string>
     <string name="ap_activity_ap_error_msg">Please connect the device to WiFi before operating</string>
@@ -46,13 +48,14 @@
     <string name="ap_activity_config_password_msg">The [_number] configuration password...</string>
     <string name="ap_activity_config_password_success">Hotspot password setting is complete...</string>
     <string name="ap_activity_config_wifi_success">Device hotspot configuration is complete</string>
-    <string name="ap_activity_wait_device_online_msg">Wait for the device to go online...</string>
+    <string name="ap_activity_wait_device_online_msg">The network configuration is complete, waiting for the device to go online...</string>
     <string name="ap_activity_config_ssid_number_msg">Trying to configure SSID for the [_number] time...</string>
     <string name="ap_activity_config_ssid_error">Failed to configure SSID, please try again</string>
     <string name="ap_activity_config_password_number_msg">Trying the [_number] configuration password...</string>
     <string name="ap_activity_config_password_error">Failed to configure password, please try again</string>
     <string name="ap_activity_device_online_success">The device went online successfully.</string>
-    <string name="ap_activity_device_online_error">The device failed to go online. Please try again.</string>
+    <string name="ap_activity_device_online_error">The device failed to go online. Please confirm that the device has been switched to the network setting state, and confirm that the WIFI name and password are correct, then please try again!</string>
+    <string name="ap_activity_device_online_error_msg">Please confirm that the device has been switched to the network settings state and confirm that the WIFI name and password are correct!</string>
     <string name="ap_activity_no_search_wifi_msg">Device WIFI not found, please try again</string>
     <string name="ap_activity_connect_wifi_success">Connected device WIFI successfully</string>
     <string name="ap_activity_connect_wifi_error">Fail to connect to device WIFI, please try again</string>
@@ -72,7 +75,7 @@
     <string name="ap_xml_next_msg">Next</string>
 
     <!-- BedDetailsActivity -->
-    <string name="details_activity_auto_calibration_msg">Automatic pressure correction</string>
+    <string name="details_activity_auto_calibration_msg">Pressure correction</string>
     <string name="details_activity_direction_convert_msg">Switch positive and negative</string>
     <string name="details_activity_life_time_start_msg">Motor life test begins</string>
     <string name="details_activity_life_time_end_msg">End of motor life test</string>
@@ -87,7 +90,7 @@
     <string name="details_unbind_error_msg">Untie failed, error reason: binding relationship does not exist</string>
     <string name="details_xml_left_menu">Back</string>
     <string name="details_xml_title">Device details</string>
-    <string name="details_xml_right_menu">debugging</string>
+    <string name="details_xml_right_menu">Debugging</string>
     <string name="details_xml_device_info_sn_msg">Equipment SN number</string>
     <string name="details_xml_device_info_name_msg">Device name</string>
     <string name="details_xml_device_info_nickname_msg">Please enter the device nickname</string>
@@ -95,6 +98,8 @@
     <string name="details_xml_device_humidity_msg">humidity</string>
     <string name="details_xml_save_msg">Save</string>
     <string name="details_xml_unbind_msg">Unbind</string>
+    <string name="details_activity_input_null_error_msg">Please enter your password</string>
+    <string name="details_activity_input_error_msg">Password verification failed, please try again</string>
 
     <!-- BindActivity -->
     <string name="bind_activity_smartbed_msg">Smart Bed</string>
@@ -176,8 +181,34 @@
     <string name="wait_xml_text_hiht_msg">Configuring hotspots...</string>
 
     <!-- HomeAdapter -->
-    <string name="home_adapter_temper_msg">temperature:</string>
-    <string name="home_adapter_humidity_msg">humidity:</string>
+    <string name="home_adapter_temper_msg">T:</string>
+    <string name="home_adapter_humidity_msg">H:</string>
     <string name="home_adapter_device_status_on_line_msg">[Online]</string>
     <string name="home_adapter_device_status_off_line_msg">[offline]</string>
+
+    <!-- inputAlert -->
+    <string name="input_alert_edittext_hiht_msg">Please enter the administrator password</string>
+    <string name="input_alert_title_msg">Identity check</string>
+
+
+    <!-- DebugActivity-->
+    <string name="debug_xml_left_menu">Exit</string>
+    <string name="debug_xml_title">Debug</string>
+    <string name="debug_xml_pressure_test_msg">Stressful</string>
+    <string name="debug_xml_pressure_hiht_msg">Please enter the pressure test value, up to 5 digits, XXXX Newton (1500)</string>
+    <string name="debug_xml_pressure_start_msg">Send</string>
+    <string name="debug_xml_direction_msg">Switch direction:</string>
+    <string name="debug_xml_direction_button_msg">Switch</string>
+    <string name="debug_xml_lifetime_test_msg">Motor life test:</string>
+    <string name="debug_xml_lefetime_test_time_msg">Test interval:</string>
+    <string name="debug_xml_lifetime_hiht_msg">Please enter the click test time, the maximum 5 digits, XXXX seconds such as (600)</string>
+    <string name="debug_xml_lifetime_start_msg">Start</string>
+    <string name="debug_xml_lifetime_end_msg">End</string>
+    <string name="debug_xml_lefttime_time_button_msg">Update</string>
+    <string name="debug_activity_pressure_val_error1_msg">Please enter the pressure value</string>
+    <string name="debug_activity_pressure_val_error2_msg">Please enter a valid pressure value</string>
+    <string name="debug_activity_lifetime_val_error1_msg">Please enter the interval</string>
+    <string name="debug_activity_lifetime_val_error2_msg">Please enter a valid interval</string>
+    <string name="debug_activity_lifetime_val_error3_msg">Please end the motor life test task first.</string>
+    <string name="debug_activity_lifetime_val_error4_msg">Please start the motor life test task first.</string>
 </resources>

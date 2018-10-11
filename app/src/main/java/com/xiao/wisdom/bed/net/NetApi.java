@@ -17,6 +17,9 @@ import com.xiao.wisdom.bed.net.base.RequestParams;
 import com.xiao.wisdom.bed.net.base.ResultCallBack;
 import com.xiao.wisdom.bed.utils.BedUtils;
 
+import java.util.ArrayList;
+import java.util.HashSet;
+
 import okhttp3.Callback;
 import okhttp3.OkHttpClient;
 import okhttp3.Request;
@@ -145,7 +148,7 @@ public class NetApi extends UrlTool{
                 .put("devtype",devtype) //区分Gps、wifi设备类型
                 .put("devname",devname); //区分智能床、智能锁、智能柜
         String url = Service_Address+BindDevice_Address;
-        new OkRequest.Builder().url(url).params(params).get(callBack);
+        new OkRequest.Builder().url(url).params(params).post(callBack);
     }
 
     /**
