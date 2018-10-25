@@ -11,6 +11,7 @@ import android.util.Log;
 
 import com.xiao.wisdom.bed.R;
 
+import java.net.URLDecoder;
 import java.security.MessageDigest;
 import java.security.NoSuchAlgorithmException;
 import java.util.UUID;
@@ -176,5 +177,19 @@ public class BedUtils {
         }else{
             return imei;
         }
+    }
+
+    /**
+     * 字符串转换UTF-8编码格式
+     * @param source
+     * @return
+     */
+    public static String getUtf8String(String source){
+        try{
+            return URLDecoder.decode(source, "UTF-8");
+        }catch (Exception e){
+
+        }
+        return null;
     }
 }

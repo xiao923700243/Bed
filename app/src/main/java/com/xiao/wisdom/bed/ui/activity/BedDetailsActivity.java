@@ -240,11 +240,7 @@ public class BedDetailsActivity extends BaseActivity {
         }
         showWaitMsg(getResString(R.string.details_update_device_info_msg));
         String cstName = getViewText(R.id.devide_cstname);
-        try{
-            cstName = new String(cstName.getBytes("ISO-8859-1"),"utf-8");
-        }catch (Exception e){
-            e.printStackTrace();
-        }
+        cstName = BedUtils.getUtf8String(cstName)!=null?BedUtils.getUtf8String(cstName):cstName;
         String devName = BedUtils.detailsToDevName(BedDetailsActivity.this,"");
         String devType = "WIFI";//getViewText(R.id.devide_devtype);
         bedService.chengeDeviceInfo(devid,devName,devType,cstName,mHandler);

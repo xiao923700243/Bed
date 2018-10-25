@@ -147,13 +147,7 @@ public class BedService extends Service {
 
     public void bindUserDevice(final String devid,final String devname,final String devtype,final String cstname,final Handler handler){
         String user = ShareUtils.getInstance(this).getUser();
-        String utfCstName = cstname;
-        try{
-            utfCstName = new String(cstname.getBytes("ISO-8859-1"),"utf-8");
-        }catch (Exception e){
-            e.printStackTrace();
-        }
-        NetApi.bindUserDevice(user,devid,devname,devtype,utfCstName,new ResultCallBack<BindUserDeviceResult>(){
+        NetApi.bindUserDevice(user,devid,devname,devtype,cstname,new ResultCallBack<BindUserDeviceResult>(){
             @Override
             public void onFailure(int statusCode, Request request, Exception e) {
                 super.onFailure(statusCode, request, e);

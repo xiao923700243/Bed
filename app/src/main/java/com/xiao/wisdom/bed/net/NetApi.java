@@ -192,6 +192,6 @@ public class NetApi extends UrlTool{
                 .put("devtype",devtype)
                 .put("cstname",cstname);
         String url = Service_Address+ChengeDeviceInfo_Address;
-        new OkRequest.Builder().url(url).params(params).get(callBack);
+        new OkRequest.Builder().url(url).params(params).post(callBack);
     }
 }

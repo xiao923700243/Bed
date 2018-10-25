@@ -113,6 +113,7 @@ public class BindActivity extends BaseActivity {
             showToast(R.string.bind_activity_device_nickname_input_error_msg);
             return;
         }
+        cstname = BedUtils.getUtf8String(cstname)!=null?BedUtils.getUtf8String(cstname):cstname;
         devname = devide_devname.getText().toString().trim();
         if(TextUtils.isEmpty(devname)){
             showToast(R.string.bind_activity_device_name_input_error_msg);
