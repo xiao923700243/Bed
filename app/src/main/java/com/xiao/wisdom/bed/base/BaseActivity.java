@@ -6,6 +6,7 @@ import android.content.ComponentName;
 import android.content.Context;
 import android.content.Intent;
 import android.content.ServiceConnection;
+import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.os.Handler;
 import android.os.IBinder;
@@ -29,8 +30,7 @@ import com.xiao.wisdom.bed.R;
 import com.xiao.wisdom.bed.net.NetApi;
 import com.xiao.wisdom.bed.service.BedService;
 import com.xiao.wisdom.bed.utils.BedUtils;
-
-import java.lang.ref.WeakReference;
+import com.xiao.wisdom.bed.utils.LanguageUtil;
 
 /**
  * Created by Administrator on 2018/8/2.
@@ -76,6 +76,14 @@ public abstract class BaseActivity extends Activity {
         //设置数据
         initData();
     }
+    @Override
+    protected void attachBaseContext(Context newBase) {
+        SharedPreferences preferences = newBase.getSharedPreferences("language", Context.MODE_PRIVATE);
+        String selectedLanguage = preferences.getString("language", "");
+        showL("attachBaseContext："+selectedLanguage);
+        super.attachBaseContext(LanguageUtil.attachBaseContext(newBase, selectedLanguage));
+    }
+
 
     @Override
     protected void onDestroy() {

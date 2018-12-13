@@ -9,6 +9,12 @@
 
     <group>
         <item
+            android:id="@+id/nav_item6"
+            android:title="@string/menu_list_6"/>
+    </group>
+
+    <group>
+        <item
             android:id="@+id/nav_item2"
             android:title="@string/menu_list_2"/>
     </group>

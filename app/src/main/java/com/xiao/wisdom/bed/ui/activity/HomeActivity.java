@@ -1,7 +1,11 @@
 package com.xiao.wisdom.bed.ui.activity;
 
 import android.Manifest;
+import android.app.AlertDialog;
+import android.content.Context;
+import android.content.DialogInterface;
 import android.content.Intent;
+import android.content.SharedPreferences;
 import android.os.Message;
 import android.support.annotation.NonNull;
 import android.support.design.widget.NavigationView;
@@ -69,6 +73,39 @@ public class HomeActivity extends BaseActivity implements EasyPermissions.Permis
         errorTextView = findViewById(R.id.home_error_text);
     }
 
+    private void showLanguageDialog(){
+        AlertDialog.Builder builder = new AlertDialog.Builder(HomeActivity.this);
+        //    指定下拉列表的显示数据
+        final String[] cities = {getResString(R.string.home_activity_language_auto),
+                getResString(R.string.home_activity_language_english),
+                getResString(R.string.home_activity_language_chinese)};
+        //    设置一个下拉的列表选择项
+        builder.setItems(cities, new DialogInterface.OnClickListener()
+        {
+            @Override
+            public void onClick(DialogInterface dialog, int which)
+            {
+                SharedPreferences preferences = getSharedPreferences("language", Context.MODE_PRIVATE);
+                SharedPreferences.Editor editor = preferences.edit();
+                editor.putString("language", getShortName(which));
+                editor.commit();
+                startActivity(LogoActivity.class);
+            }
+        });
+        builder.show();
+    }
+
+    private String getShortName(int index){
+        if(index == 1){
+            return "en";
+        }else if(index == 2){
+            return "zh";
+        }else{
+
+            return "";
+        }
+    }
+
 
     public void onDrawer(View v){
         if(drawerLayout.isDrawerOpen(GravityCompat.START)){
@@ -96,6 +133,7 @@ public class HomeActivity extends BaseActivity implements EasyPermissions.Permis
             exitAlert = null;
         }
         needDev = false;
+        showL("HomeActivity被销毁");
         super.onDestroy();
 
     }
@@ -269,6 +307,9 @@ public class HomeActivity extends BaseActivity implements EasyPermissions.Permis
                     });
                 }
                 exitAlert.show();
+                break;
+            case R.id.nav_item6:
+                showLanguageDialog();
                 break;
         }
         drawerLayout.closeDrawer(GravityCompat.START);

@@ -13,6 +13,7 @@
     <string name="login_password__textview_hiht">请输入6-12位密码</string>
     <string name="login_login_button_text">登录</string>
     <string name="login_register_button_text">注册</string>
+    <string name="login_language_button_text">语言</string>
     <string name="login_activity_toast_user_error">请输入正确的账号(6-12位)</string>
     <string name="login_activity_toast_password_error">请输入正确的密码(6-12位)</string>
     <string name="login_activity_toast_login_success">登录成功</string>
@@ -35,6 +36,7 @@
     <string name="menu_list_3">操作使用教程</string>
     <string name="menu_list_4">关于我们</string>
     <string name="menu_list_5">退出登录</string>
+    <string name="menu_list_6">语言</string>
 
     <!-- InstructionsActivity -->
     <string name="is_xml_left_menu">返回</string>
@@ -311,4 +313,7 @@
     <string name="update_userinfo_activity_title_msg">修改个人信息</string>
     <string name="update_userinfo_activity_success_msg">修改成功</string>
     <string name="debug_activity_life_time_ms_msg"> 秒</string>
+    <string name="home_activity_language_auto">跟随系统</string>
+    <string name="home_activity_language_english">英文</string>
+    <string name="home_activity_language_chinese">中文</string>
 </resources>

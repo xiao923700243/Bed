@@ -13,6 +13,7 @@
     <string name="login_password__textview_hiht">Please enter a 6-12 digit password</string>
     <string name="login_login_button_text">Sign in</string>
     <string name="login_register_button_text">Register</string>
+    <string name="login_language_button_text">Language</string>
     <string name="login_activity_toast_user_error">Please enter the correct account number (6-12 digits)</string>
     <string name="login_activity_toast_password_error">Please enter the correct password (6-12 digits)</string>
     <string name="login_activity_toast_login_success">Login Successful</string>
@@ -35,6 +36,7 @@
     <string name="menu_list_3">Software instructions</string>
     <string name="menu_list_4">About us</string>
     <string name="menu_list_5">Logout</string>
+    <string name="menu_list_6">Language</string>
 
     <!-- ApSettingActivity -->
     <string name="ap_activity_conn_msg">Connecting device WIFI...</string>
@@ -303,4 +305,8 @@
     <string name="update_userinfo_activity_title_msg">Modify personal information</string>
     <string name="update_userinfo_activity_success_msg">Modified success</string>
     <string name="debug_activity_life_time_ms_msg"> S</string>
+
+    <string name="home_activity_language_auto">Auto</string>
+    <string name="home_activity_language_english">English</string>
+    <string name="home_activity_language_chinese">Chinese</string>
 </resources>

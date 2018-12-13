@@ -1,6 +1,10 @@
 package com.xiao.wisdom.bed.ui.activity;
 
 import android.Manifest;
+import android.app.AlertDialog;
+import android.content.Context;
+import android.content.DialogInterface;
+import android.content.SharedPreferences;
 import android.os.Message;
 import android.support.annotation.NonNull;
 import android.text.TextUtils;
@@ -252,7 +256,9 @@ public class LoginActivity extends BaseActivity implements View.OnClickListener{
             }
         }
         accountList = SQLiteUtils.getInstance().selectAccounts();
-        accountAdapter.setData(accountList);
+        if(accountAdapter!=null){
+            accountAdapter.setData(accountList);
+        }
     }
 
     @Subscribe
@@ -269,10 +275,48 @@ public class LoginActivity extends BaseActivity implements View.OnClickListener{
             popupWindow.dismiss();
         }
     }
+    public void onSwitchLanguage(View v){
+        showLanguageDialog();
+    }
+
+    private void showLanguageDialog(){
+        AlertDialog.Builder builder = new AlertDialog.Builder(this);
+        //    指定下拉列表的显示数据
+        final String[] cities = {getResString(R.string.home_activity_language_auto),
+                getResString(R.string.home_activity_language_english),
+                getResString(R.string.home_activity_language_chinese)};
+        //    设置一个下拉的列表选择项
+        builder.setItems(cities, new DialogInterface.OnClickListener()
+        {
+            @Override
+            public void onClick(DialogInterface dialog, int which)
+            {
+                SharedPreferences preferences = getSharedPreferences("language", Context.MODE_PRIVATE);
+                SharedPreferences.Editor editor = preferences.edit();
+                editor.putString("language", getShortName(which));
+                editor.commit();
+                startActivity(LogoActivity.class);
+            }
+        });
+        builder.show();
+    }
+
+    private String getShortName(int index){
+        if(index == 1){
+            return "en";
+        }else if(index == 2){
+            return "zh";
+        }else{
+
+            return "";
+        }
+    }
+
 
     @Override
     protected void onDestroy() {
         EventBus.getDefault().unregister(this);
+        showL("LoginActivity被销毁");
         super.onDestroy();
     }
 }
