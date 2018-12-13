@@ -103,7 +103,8 @@ public class ChangePwdActivity extends BaseActivity {
     private void changeData(String pwd){
         String user = ShareUtils.getInstance(this).getUser();
         String password = pwd;
-        ShareUtils.getInstance(this).saveUser(user,password);
+        String nickname = ShareUtils.getInstance(this).getNickname();
+        ShareUtils.getInstance(this).saveUser(user,password,nickname);
     }
 
     public void onRefreshCode(View v){

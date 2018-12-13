@@ -1,0 +1,86 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:orientation="vertical"
+    android:fitsSystemWindows="true"
+    android:background="@color/home_title_background"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
+    <RelativeLayout
+        android:background="@color/home_title_background"
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/title_bar_height">
+        <TextView
+            android:textSize="@dimen/menu_text_font_size"
+            android:onClick="onExit"
+            android:text="@string/details_xml_left_menu"
+            android:textColor="#FFFFFF"
+            android:layout_marginLeft="10dp"
+            android:gravity="center"
+            android:layout_width="wrap_content"
+            android:layout_height="match_parent" />
+
+        <TextView
+            android:layout_centerVertical="true"
+            android:layout_centerHorizontal="true"
+            android:textSize="@dimen/title_text_font_size"
+            android:text="@string/update_userinfo_activity_title_msg"
+            android:textColor="#ffffff"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content" />
+    </RelativeLayout>
+
+    <LinearLayout
+        android:background="#ffffff"
+        android:orientation="vertical"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+        <EditText
+            android:id="@+id/nickname_new"
+            android:layout_marginTop="50dp"
+            android:layout_marginLeft="10dp"
+            android:layout_marginRight="10dp"
+            android:layout_marginBottom="10dp"
+            android:background="@drawable/edittext_background"
+            android:hint="@string/register_activity_nickname_hint_msg"
+            android:maxLength="12"
+            android:textSize="14sp"
+            android:paddingLeft="10dp"
+            android:paddingRight="10dp"
+            android:paddingTop="5dp"
+            android:paddingBottom="5dp"
+            android:layout_width="match_parent"
+            android:layout_height="50dp" />
+
+        <LinearLayout
+            android:background="#ffffff"
+            android:orientation="horizontal"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent">
+            <Button
+                android:background="@drawable/button_unbind"
+                android:layout_marginLeft="10dp"
+                android:layout_marginRight="5dp"
+                android:layout_marginTop="20dp"
+                android:textSize="14sp"
+                android:textColor="#000000"
+                android:text="@string/public_cancel_msg"
+                android:onClick="onExit"
+                android:layout_weight="1"
+                android:layout_width="0dp"
+                android:layout_height="50dp" />
+
+            <Button
+                android:background="@drawable/button_background"
+                android:layout_marginLeft="10dp"
+                android:layout_marginRight="5dp"
+                android:layout_marginTop="20dp"
+                android:textSize="14sp"
+                android:textColor="#ffffff"
+                android:text="@string/details_xml_save_msg"
+                android:onClick="onUpdate"
+                android:layout_weight="1"
+                android:layout_width="0dp"
+                android:layout_height="50dp" />
+        </LinearLayout>
+    </LinearLayout>
+</LinearLayout>

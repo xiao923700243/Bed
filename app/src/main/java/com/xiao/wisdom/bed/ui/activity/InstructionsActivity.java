@@ -1,5 +1,7 @@
 package com.xiao.wisdom.bed.ui.activity;
 
+import android.view.View;
+
 import com.xiao.wisdom.bed.R;
 import com.xiao.wisdom.bed.base.BaseActivity;
 
@@ -21,6 +23,10 @@ public class InstructionsActivity extends BaseActivity {
     @Override
     public void initData() {
 
+    }
+
+    public void onExit(View v){
+        this.finish();
     }
 
 

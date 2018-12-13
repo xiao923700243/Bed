@@ -45,6 +45,7 @@ public class HomeActivity extends BaseActivity implements EasyPermissions.Permis
     private int delayTime = 500;
     private ExitAlert exitAlert;
     private TextView userName;
+    private boolean needDev = true;
 
 
     @Override
@@ -59,6 +60,12 @@ public class HomeActivity extends BaseActivity implements EasyPermissions.Permis
         navigationView.setNavigationItemSelectedListener(this);
         listView = findViewById(R.id.list_view);
         userName = navigationView.getHeaderView(0).findViewById(R.id.user_);
+        navigationView.getHeaderView(0).setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                startActivity(UpdateUserInfoActivity.class);
+            }
+        });
         errorTextView = findViewById(R.id.home_error_text);
     }
 
@@ -74,7 +81,11 @@ public class HomeActivity extends BaseActivity implements EasyPermissions.Permis
     @Override
     public void initData() {
         EventBus.getDefault().register(this);
-        userName.setText(ShareUtils.getInstance(this).getUser());
+        String nickname = ShareUtils.getInstance(this).getNickname();
+        if(nickname == null || nickname.length()<=0){
+            nickname = ShareUtils.getInstance(this).getUser();
+        }
+        userName.setText(nickname);
     }
 
     @Override
@@ -84,6 +95,7 @@ public class HomeActivity extends BaseActivity implements EasyPermissions.Permis
             exitAlert.dismiss();;
             exitAlert = null;
         }
+        needDev = false;
         super.onDestroy();
 
     }
@@ -103,7 +115,7 @@ public class HomeActivity extends BaseActivity implements EasyPermissions.Permis
     public void onBind() {
         showWaitMsg(getResString(R.string.home_activity_wait_user_info));
         isInitData = true;
-        bedService.getUserAllDevStats(mHandler);
+        bedService.getUserAllDevStats(mHandler,needDev);
     }
 
     @Override
@@ -150,7 +162,7 @@ public class HomeActivity extends BaseActivity implements EasyPermissions.Permis
                 }
                 break;
             case 0x04:
-                bedService.getUserAllDevStats(mHandler);
+                bedService.getUserAllDevStats(mHandler,needDev);
                 break;
             case 0x05:
                 if(isNetWork()){
@@ -176,6 +188,15 @@ public class HomeActivity extends BaseActivity implements EasyPermissions.Permis
         if(bedService!=null){
             bedService.sendDevCommend(event.devid,event.cmd,mHandler);
         }
+    }
+
+    @Subscribe
+    public void onUpdateEvent(Event.UpdateNickNameEvent event){
+        String nickname = ShareUtils.getInstance(this).getNickname();
+        if(nickname == null || nickname.length()<=0){
+            nickname = ShareUtils.getInstance(this).getUser();
+        }
+        userName.setText(nickname);
     }
 
     private void RequestPermissions(){
@@ -217,10 +238,16 @@ public class HomeActivity extends BaseActivity implements EasyPermissions.Permis
             case R.id.nav_item1: //重置密码
                 startActivity(ChangePwdActivity.class);
                 break;
-            case R.id.nav_item2: //App使用教程
+            case R.id.nav_item2: //安装教材
+                startActivity(HardwareActivity.class);
+                break;
+            case R.id.nav_item3: //操作使用教程
                 startActivity(InstructionsActivity.class);
                 break;
-            case R.id.nav_item3: //退出登录
+            case R.id.nav_item4: //关于我们
+                startActivity(AboutActivity.class);
+                break;
+            case R.id.nav_item5: //退出登录
                 if(exitAlert !=null){
                     exitAlert.cancel();
                     exitAlert = null;
@@ -234,7 +261,8 @@ public class HomeActivity extends BaseActivity implements EasyPermissions.Permis
 
                         @Override
                         public void onConfirm() {
-                            ShareUtils.getInstance(HomeActivity.this).cleanUser();
+                            //ShareUtils.getInstance(HomeActivity.this).cleanUser();
+                            ShareUtils.getInstance(HomeActivity.this).putValue("exit_account",true);
                             startActivity(LoginActivity.class,true);
                             exitAlert.dismiss();
                         }

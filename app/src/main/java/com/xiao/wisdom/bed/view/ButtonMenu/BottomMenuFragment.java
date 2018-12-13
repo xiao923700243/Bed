@@ -23,6 +23,11 @@ import java.util.List;
 
 
 public class BottomMenuFragment extends DialogFragment {
+    private onLastButtonCallBack onCallback;
+
+    public interface onLastButtonCallBack{
+            void onLastButtonCallBack();
+    }
 
 
     private final String TAG = "BottomMenuFragment";
@@ -31,6 +36,9 @@ public class BottomMenuFragment extends DialogFragment {
         // Required empty public constructor
     }
 
+    public void setOnCallback(onLastButtonCallBack onCallback){
+        this.onCallback = onCallback;
+    }
 
     private List<MenuItem> menuItems;
 
@@ -65,6 +73,9 @@ public class BottomMenuFragment extends DialogFragment {
             @Override
             public void onClick(View v) {
                 Log.i(TAG, "onClick: tv_cancel");
+                if(onCallback!=null){
+                    onCallback.onLastButtonCallBack();
+                }
                 BottomMenuFragment.this.dismiss();
             }
         });

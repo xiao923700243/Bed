@@ -1,53 +1,51 @@
 <?xml version="1.0" encoding="utf-8"?>
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:orientation="vertical"
+    android:fitsSystemWindows="true"
+    android:background="@color/home_title_background"
     android:layout_width="match_parent"
     android:layout_height="match_parent">
-    <LinearLayout
+    <RelativeLayout
         android:background="@color/home_title_background"
-        android:orientation="vertical"
-        android:fitsSystemWindows="true"
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/title_bar_height">
+        <LinearLayout
+            android:onClick="onExit"
+            android:layout_marginLeft="10dp"
+            android:layout_centerVertical="true"
+            android:orientation="horizontal"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content">
+            <TextView
+                android:textSize="12sp"
+                android:text="@string/register_xml_left_menu"
+                android:textColor="#FFFFFF"
+                android:layout_marginLeft="10dp"
+                android:gravity="center"
+                android:layout_width="wrap_content"
+                android:layout_height="match_parent" />
+        </LinearLayout>
+
+        <TextView
+            android:layout_centerVertical="true"
+            android:layout_centerHorizontal="true"
+            android:textSize="@dimen/title_text_font_size"
+            android:text="@string/register_xml_title"
+            android:textColor="#ffffff"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content" />
+    </RelativeLayout>
+    <ScrollView
+        android:background="#ffffff"
         android:layout_width="match_parent"
         android:layout_height="match_parent">
-
         <LinearLayout
             android:orientation="vertical"
-            android:background="#ffffff"
             android:layout_width="match_parent"
-            android:layout_height="match_parent">
-            <RelativeLayout
-                android:layout_width="match_parent"
-                android:layout_height="@dimen/title_bar_height">
-                <LinearLayout
-                    android:onClick="onExit"
-                    android:layout_marginLeft="10dp"
-                    android:layout_centerVertical="true"
-                    android:orientation="horizontal"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content">
-                    <TextView
-                        android:textSize="12sp"
-                        android:text="@string/register_xml_left_menu"
-                        android:textColor="#FFFFFF"
-                        android:layout_marginLeft="10dp"
-                        android:gravity="center"
-                        android:layout_width="wrap_content"
-                        android:layout_height="match_parent" />
-                </LinearLayout>
-
-                <TextView
-                    android:layout_centerVertical="true"
-                    android:layout_centerHorizontal="true"
-                    android:textSize="14sp"
-                    android:text="@string/register_xml_title"
-                    android:textColor="#ffffff"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content" />
-            </RelativeLayout>
-
+            android:layout_height="wrap_content">
             <ImageView
                 android:src="@mipmap/ic_logo"
-                android:layout_marginTop="80dp"
+                android:layout_marginTop="10dp"
                 android:layout_gravity="center_horizontal"
                 android:layout_centerHorizontal="true"
                 android:layout_width="wrap_content"
@@ -55,12 +53,29 @@
 
             <EditText
                 android:id="@+id/user_"
-                android:layout_marginTop="20dp"
+                android:layout_marginTop="10dp"
                 android:layout_marginLeft="10dp"
                 android:layout_marginRight="10dp"
                 android:layout_marginBottom="10dp"
                 android:background="@drawable/edittext_background"
                 android:hint="@string/register_xml_account_hiht_msg"
+                android:textSize="14sp"
+                android:paddingLeft="10dp"
+                android:paddingRight="10dp"
+                android:paddingTop="5dp"
+                android:paddingBottom="5dp"
+                android:layout_width="match_parent"
+                android:layout_height="50dp" />
+
+            <EditText
+                android:id="@+id/nickname_"
+                android:layout_marginTop="10dp"
+                android:layout_marginLeft="10dp"
+                android:layout_marginRight="10dp"
+                android:layout_marginBottom="10dp"
+                android:background="@drawable/edittext_background"
+                android:hint="@string/register_activity_nickname_hint_msg"
+                android:maxLength="12"
                 android:textSize="14sp"
                 android:paddingLeft="10dp"
                 android:paddingRight="10dp"
@@ -128,6 +143,5 @@
                 android:layout_marginBottom="10dp"
                 android:layout_height="50dp" />
         </LinearLayout>
-    </LinearLayout>
-
+    </ScrollView>
 </LinearLayout>

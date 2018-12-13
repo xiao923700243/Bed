@@ -22,6 +22,7 @@ import java.security.cert.CertificateException;
 import java.security.cert.CertificateFactory;
 import java.security.cert.X509Certificate;
 import java.util.List;
+import java.util.concurrent.TimeUnit;
 
 import javax.net.ssl.KeyManager;
 import javax.net.ssl.KeyManagerFactory;
@@ -56,13 +57,17 @@ public class RequestClient {
     public static boolean MODE_DEBUG = true;      //调试状态
 
     private RequestClient() {
-        okHttpClient = new OkHttpClient();
-        okHttpClient.connectTimeoutMillis();
-        okHttpClient.retryOnConnectionFailure();
-        okHttpClient.readTimeoutMillis();
-        okHttpClient.writeTimeoutMillis();
+        //okHttpClient = new OkHttpClient();
+        okHttpClient = new OkHttpClient.Builder()
+                .connectTimeout(30, TimeUnit.SECONDS)
+                .readTimeout(30, TimeUnit.SECONDS)
+                .writeTimeout(30, TimeUnit.SECONDS)
+                .build();
+        //okHttpClient.retryOnConnectionFailure();
+        //okHttpClient.readTimeoutMillis();
+        //okHttpClient.writeTimeoutMillis();
         //CookieJar cookieJar = new PersistentCookieJar(new SetCookieCache(), new SharedPrefsCookiePersistor(ctx));
-        okHttpClient.cookieJar();
+        //okHttpClient.cookieJar();
         delivery = new Handler(Looper.getMainLooper());
     }
 

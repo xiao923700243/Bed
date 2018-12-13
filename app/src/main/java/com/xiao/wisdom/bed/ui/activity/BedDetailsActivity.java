@@ -6,16 +6,20 @@ import android.text.TextUtils;
 import android.util.Log;
 import android.view.View;
 import android.widget.EditText;
+import android.widget.ImageView;
 import android.widget.TextView;
 
 import com.xiao.wisdom.bed.R;
 import com.xiao.wisdom.bed.base.BaseActivity;
 import com.xiao.wisdom.bed.bean.Event;
+import com.xiao.wisdom.bed.bean.SendCmdResult;
 import com.xiao.wisdom.bed.utils.BedUtils;
+import com.xiao.wisdom.bed.view.AutoAlert;
 import com.xiao.wisdom.bed.view.ButtonMenu.BottomMenuFragment;
 import com.xiao.wisdom.bed.view.ButtonMenu.MenuItem;
 import com.xiao.wisdom.bed.view.ButtonMenu.MenuItemOnClickListener;
 import com.xiao.wisdom.bed.view.InputAlert;
+import com.xiao.wisdom.bed.view.PressureInputAlert;
 import com.xiao.wisdom.bed.view.UnBindAlert;
 
 import org.greenrobot.eventbus.EventBus;
@@ -30,14 +34,17 @@ import cn.qqtheme.framework.picker.SinglePicker;
  */
 
 public class BedDetailsActivity extends BaseActivity {
-    private TextView devide_devid,device_temper,device_humidity; //devide_devname,devide_devtype,
+    private TextView devide_devid; //devide_devname,devide_devtype,
     private EditText devide_cstname;
+    private ImageView bedImage;
 
-    private String devid,devname,devtype,temper,humidity,cstname;
+    private String devid,cstname;
 
     private BottomMenuFragment buttonMenu;
 
     private UnBindAlert unBindAlert;
+    private PressureInputAlert pressureInputAlert;
+    private int bedImageCount = 0;
 
 
     private SinglePicker<String> devnamePicker;
@@ -53,27 +60,28 @@ public class BedDetailsActivity extends BaseActivity {
     @Override
     public void initView() {
         devide_devid = findViewById(R.id.devide_devid);
-        //devide_devname = findViewById(R.id.devide_devname);
-        //devide_devtype = findViewById(R.id.devide_devtype);
-        device_temper = findViewById(R.id.device_temper);
-        device_humidity = findViewById(R.id.device_humidity);
         devide_cstname = findViewById(R.id.devide_cstname);
+        bedImage = findViewById(R.id.details_info_image);
     }
 
     @Override
     public void initData() {
         devid = getIntent().getExtras().getString("devid");
         devide_devid.setText(devid);
-        devname = getIntent().getExtras().getString("devname");
-        //devide_devname.setText(BedUtils.devNameToDetails(devname));
-        devtype = getIntent().getExtras().getString("devtype");
-        //devide_devtype.setText(devtype);
         cstname = getIntent().getExtras().getString("cstname");
         devide_cstname.setText(cstname);
-        temper =  getIntent().getExtras().getFloat("temper")+"";
-        device_temper.setText(temper);
-        humidity =  getIntent().getExtras().getFloat("humidity")+"";
-        device_humidity.setText(humidity);
+        bedImage.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                bedImageCount++;
+                mHandler.removeMessages(0x09);
+                if(bedImageCount>=6){
+                    bedImageCount = 0;
+                    onCheckIdentity();
+                }
+                mHandler.sendEmptyMessageDelayed(0x09,1000);
+            }
+        });
     }
 
     public void onExit(View v){
@@ -134,7 +142,7 @@ public class BedDetailsActivity extends BaseActivity {
     */
 
     private InputAlert inputAlert;
-    public void onCheckIdentity(View v){
+    public void onCheckIdentity(){
         if(inputAlert == null){
             inputAlert = new InputAlert(this, R.style.Dialog, new InputAlert.InputAlertEvent() {
                 @Override
@@ -156,56 +164,75 @@ public class BedDetailsActivity extends BaseActivity {
         }
     }
 
+    private void showPressureInputAlert(){
+        if(pressureInputAlert == null){
+            pressureInputAlert = new PressureInputAlert(mContext,R.style.Dialog,new PressureInputAlert.PressureInputEvent(){
+                @Override
+                public void onPressureInputEvent(int code) {
+                    bedService.sendPressure(devid,code,mHandler);
+                }
+            });
+        }
+        if(pressureInputAlert!=null && !pressureInputAlert.isShowing()){
+            pressureInputAlert.show();
+        }
+    }
+
+    private BottomMenuFragment.onLastButtonCallBack lastButtonCallBack = new BottomMenuFragment.onLastButtonCallBack() {
+        @Override
+        public void onLastButtonCallBack() {
+            showMessageAlert();
+        }
+    };
+
     public void onDebug(View v){
         if(buttonMenu == null){
             buttonMenu = new BottomMenuFragment();
             List<MenuItem> menuItemList = new ArrayList<MenuItem>();
 
-
             MenuItem menuItem1 = new MenuItem();
-            menuItem1.setText(getResString(R.string.details_activity_auto_calibration_msg));
+            menuItem1.setText(getResString(R.string.details_settings_menu_1_title));
             menuItem1.setMenuItemOnClickListener(new MenuItemOnClickListener(buttonMenu,menuItem1) {
                 @Override
                 public void onClickMenuItem(View v, MenuItem menuItem) {
-                    EventBus.getDefault().post(new Event.CmdEvent(devid, BedUtils.CMD_PRESSURE_AUTO_CALIBRATION));
+                    if(bedService == null){
+                        return;
+                    }
+                    bedService.sendAutoCalibration(devid,mHandler);
                     buttonMenu.dismiss();
                 }
             });
 
             MenuItem menuItem2 = new MenuItem();
-            menuItem2.setText(getResString(R.string.details_activity_direction_convert_msg));
+            menuItem2.setText(getResString(R.string.details_settings_menu_2_title));
             menuItem2.setMenuItemOnClickListener(new MenuItemOnClickListener(buttonMenu,menuItem2) {
                 @Override
                 public void onClickMenuItem(View v, MenuItem menuItem) {
-                    EventBus.getDefault().post(new Event.CmdEvent(devid, BedUtils.CMD_DIRECTION_CONVERT));
+                    if(bedService == null){
+                        return;
+                    }
+                    bedService.sendConvert(devid,mHandler);
                     buttonMenu.dismiss();
                 }
             });
 
             MenuItem menuItem3 = new MenuItem();
-            menuItem3.setText(getResString(R.string.details_activity_life_time_start_msg));
+            menuItem3.setText(getResString(R.string.details_settings_menu_3_title));
             menuItem3.setMenuItemOnClickListener(new MenuItemOnClickListener(buttonMenu,menuItem3) {
                 @Override
                 public void onClickMenuItem(View v, MenuItem menuItem) {
-                    EventBus.getDefault().post(new Event.CmdEvent(devid, BedUtils.CMD_LIFE_TIME_TEST_START));
-                    buttonMenu.dismiss();
-                }
-            });
-
-            MenuItem menuItem4 = new MenuItem();
-            menuItem4.setText(getResString(R.string.details_activity_life_time_end_msg));
-            menuItem4.setMenuItemOnClickListener(new MenuItemOnClickListener(buttonMenu,menuItem4) {
-                @Override
-                public void onClickMenuItem(View v, MenuItem menuItem) {
-                    EventBus.getDefault().post(new Event.CmdEvent(devid, BedUtils.CMD_LIFE_TIME_TEST_FINISH));
+                    if(bedService == null){
+                        return;
+                    }
+                    showPressureInputAlert();
                     buttonMenu.dismiss();
                 }
             });
             menuItemList.add(menuItem1);
             menuItemList.add(menuItem2);
             menuItemList.add(menuItem3);
-            menuItemList.add(menuItem4);
             buttonMenu.setMenuItems(menuItemList);
+            buttonMenu.setOnCallback(lastButtonCallBack);
         }
         buttonMenu.show(getFragmentManager(), "BottomMenuFragment");
     }
@@ -222,12 +249,22 @@ public class BedDetailsActivity extends BaseActivity {
                 @Override
                 public void onConfirm() {
                     showWaitMsg(getResString(R.string.details_unbind_dislog_msg));
-                    bedService.disBindUserDevice(devid,"WIFI",mHandler);
+                    bedService.disBindUserDevice(devid,mHandler);
                     unBindAlert.dismiss();
                 }
             });
         }
         unBindAlert.show();
+    }
+
+    private AutoAlert autoAlert;
+    private void showAutoAlert(){
+        if(autoAlert == null){
+            autoAlert = new AutoAlert(mContext,R.style.Dialog);
+        }
+        if(autoAlert!=null && !autoAlert.isShowing()){
+            autoAlert.show();
+        }
     }
 
     public void onSave(View v){
@@ -241,9 +278,7 @@ public class BedDetailsActivity extends BaseActivity {
         showWaitMsg(getResString(R.string.details_update_device_info_msg));
         String cstName = getViewText(R.id.devide_cstname);
         cstName = BedUtils.getUtf8String(cstName)!=null?BedUtils.getUtf8String(cstName):cstName;
-        String devName = BedUtils.detailsToDevName(BedDetailsActivity.this,"");
-        String devType = "WIFI";//getViewText(R.id.devide_devtype);
-        bedService.chengeDeviceInfo(devid,devName,devType,cstName,mHandler);
+        bedService.chengeDeviceInfo(devid,cstName,mHandler);
     }
 
     public void unBindDervice(View v){
@@ -285,6 +320,40 @@ public class BedDetailsActivity extends BaseActivity {
             case 0x05:
                 showToast(getResString(R.string.details_unbind_error_msg));
                 break;
+            case 0x06: {
+                SendCmdResult cmdResult = (SendCmdResult) msg.obj;
+                if(cmdResult.status.equals("ok")){
+                    showToast(R.string.details_send_auto_sunccess_msg);
+                    showAutoAlert();
+                }else if(cmdResult.msg.equals("用户与设备未绑定")){
+                    showLongToast(R.string.details_send_auto_error_1_msg);
+                }else{
+                    showLongToast(R.string.details_send_auto_error_2_msg);
+                }
+            }break;
+            case 0x07:{
+                SendCmdResult cmdResult = (SendCmdResult) msg.obj;
+                if(cmdResult.status.equals("ok")){
+                    showToast(R.string.details_send_convert_sunccess_msg);
+                }else if(cmdResult.msg.equals("用户与设备未绑定")){
+                    showLongToast(R.string.details_send_convert_error_1_msg);
+                }else{
+                    showLongToast(R.string.details_send_convert_error_2_msg);
+                }
+            }break;
+            case 0x08:{
+                SendCmdResult cmdResult = (SendCmdResult) msg.obj;
+                if(cmdResult.status.equals("ok")){
+                    showToast(R.string.details_send_pressure_sunccess_msg);
+                }else if(cmdResult.msg.equals("用户与设备未绑定")){
+                    showLongToast(R.string.details_send_pressure_error_1_msg);
+                }else{
+                    showLongToast(R.string.details_send_pressure_error_2_msg);
+                }
+            }break;
+            case 0x09:{
+                bedImageCount = 0;
+            }break;
         }
     }
 }

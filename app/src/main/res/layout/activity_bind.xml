@@ -34,9 +34,21 @@
             android:textColor="#ffffff"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content" />
+
+        <TextView
+            android:onClick="onSwitchWifi"
+            android:textSize="@dimen/menu_text_font_size"
+            android:text="@string/ap_xml_right_menu"
+            android:textColor="#FFFFFF"
+            android:layout_centerVertical="true"
+            android:layout_alignParentRight="true"
+            android:layout_marginRight="10dp"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content" />
     </RelativeLayout>
 
     <ScrollView
+        android:background="#ffffff"
         android:layout_width="match_parent"
         android:layout_height="match_parent">
     <LinearLayout
@@ -44,143 +56,158 @@
         android:background="#ffffff"
         android:layout_width="match_parent"
         android:layout_height="match_parent">
-    <ImageView
-        android:scaleType="fitXY"
-        android:src="@mipmap/ic_add_image"
-        android:layout_width="match_parent"
-        android:layout_height="200dp" />
 
-    <LinearLayout
-        android:background="#ffffff"
-        android:layout_width="match_parent"
-        android:orientation="horizontal"
-        android:layout_height="60dp">
-        <TextView
-            android:text="@string/bind_xml_device_sn_text_msg"
-            android:textSize="12sp"
-            android:gravity="center_vertical"
+        <!--设备信息 -->
+        <LinearLayout
+            android:id="@+id/device_info_layout"
+            android:orientation="vertical"
             android:paddingLeft="10dp"
-            android:layout_width="wrap_content"
-            android:layout_height="match_parent" />
-        <EditText
-            android:id="@+id/devide_devid"
-            android:gravity="right|center_vertical"
-            android:textSize="12sp"
             android:paddingRight="10dp"
-            android:paddingLeft="10dp"
-            android:hint="@string/bind_xml_device_sn_hiht_msg"
-            android:maxLines="1"
-            android:singleLine="true"
-            android:background="#ffffffff"
             android:layout_width="match_parent"
-            android:layout_height="match_parent" />
-    </LinearLayout>
-    <View
-        android:background="#c9c9c9"
-        android:layout_width="match_parent"
-        android:layout_height="1px"></View>
-    <LinearLayout
-        android:background="#ffffff"
-        android:layout_width="match_parent"
-        android:orientation="horizontal"
-        android:layout_height="60dp">
-        <TextView
-            android:text="@string/bind_xml_device_cstname_text_msg"
-            android:textSize="12sp"
-            android:gravity="center_vertical"
-            android:paddingLeft="10dp"
-            android:layout_width="wrap_content"
-            android:layout_height="match_parent" />
-        <EditText
-            android:id="@+id/devide_cstname"
-            android:gravity="right|center_vertical"
-            android:hint="@string/bind_xml_device_cstname_hiht_msg"
-            android:textSize="12sp"
-            android:paddingRight="10dp"
-            android:paddingLeft="10dp"
-            android:maxLines="1"
-            android:singleLine="true"
-            android:background="#ffffffff"
-            android:layout_width="match_parent"
-            android:layout_height="match_parent" />
-    </LinearLayout>
-        <View
-            android:background="#c9c9c9"
-            android:layout_width="match_parent"
-            android:layout_height="1px"></View>
-    <LinearLayout
-        android:background="#ffffff"
-        android:layout_width="match_parent"
-        android:layout_height="60dp">
-        <TextView
-            android:text="@string/bind_xml_device_name_text_msg"
-            android:textSize="12sp"
-            android:gravity="center_vertical"
-            android:paddingLeft="10dp"
-            android:layout_width="wrap_content"
-            android:layout_height="match_parent" />
-        <TextView
-            android:id="@+id/devide_devname"
-            android:onClick="onDeviceName"
-            android:gravity="right|center_vertical"
-            android:hint="@string/bind_xml_device_name_hiht_msg"
-            android:text="@string/bind_activity_smartbed_msg"
-            android:textSize="12sp"
-            android:paddingRight="10dp"
-            android:paddingLeft="10dp"
-            android:layout_width="match_parent"
-            android:layout_height="match_parent" />
-    </LinearLayout>
-        <View
-            android:background="#c9c9c9"
-            android:layout_width="match_parent"
-            android:layout_height="1px"></View>
-    <LinearLayout
-        android:background="#ffffff"
-        android:layout_width="match_parent"
-        android:layout_height="60dp">
-        <TextView
-            android:text="@string/bind_xml_device_type_text_msg"
-            android:textSize="12sp"
-            android:gravity="center_vertical"
-            android:paddingLeft="10dp"
-            android:layout_width="wrap_content"
-            android:layout_height="match_parent" />
-        <TextView
-            android:id="@+id/devide_devtype"
-            android:onClick="onDeviceType"
-            android:gravity="right|center_vertical"
-            android:hint="@string/bind_xml_device_type_hiht_msg"
-            android:text="@string/bind_xml_device_type_wifi_msg"
-            android:textSize="12sp"
-            android:paddingRight="10dp"
-            android:paddingLeft="10dp"
-            android:layout_width="match_parent"
-            android:layout_height="match_parent" />
-    </LinearLayout>
-        <View
-            android:background="#c9c9c9"
-            android:layout_width="match_parent"
-            android:layout_height="1px"></View>
+            android:layout_height="wrap_content">
+            <LinearLayout
+                android:orientation="horizontal"
+                android:layout_width="match_parent"
+                android:layout_height="60dp">
+                <TextView
+                    android:textSize="14sp"
+                    android:text="@string/bind_xml_device_sn_text_msg"
+                    android:gravity="center_vertical"
+                    android:layout_width="wrap_content"
+                    android:layout_height="match_parent" />
+                <EditText
+                    android:id="@+id/devide_devid"
+                    android:gravity="right|center_vertical"
+                    android:textSize="14sp"
+                    android:hint="@string/bind_xml_device_sn_hiht_msg"
+                    android:maxLines="1"
+                    android:singleLine="true"
+                    android:background="#ffffffff"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent" />
+            </LinearLayout>
+            <View
+                android:background="#aaaaaa"
+                android:layout_width="match_parent"
+                android:layout_height="1px"></View>
 
-    <LinearLayout
-        android:background="#ffffff"
-        android:orientation="vertical"
-        android:layout_marginBottom="80dp"
-        android:layout_width="match_parent"
-        android:layout_height="match_parent">
+            <LinearLayout
+                android:orientation="horizontal"
+                android:layout_width="match_parent"
+                android:layout_height="60dp">
+                <TextView
+                    android:textSize="14sp"
+                    android:text="@string/bind_xml_device_cstname_text_msg"
+                    android:gravity="center_vertical"
+                    android:layout_width="wrap_content"
+                    android:layout_height="match_parent" />
+                <EditText
+                    android:id="@+id/devide_cstname"
+                    android:gravity="right|center_vertical"
+                    android:textSize="14sp"
+                    android:hint="@string/bind_xml_device_cstname_hiht_msg"
+                    android:maxLines="1"
+                    android:singleLine="true"
+                    android:background="#ffffffff"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent" />
+            </LinearLayout>
+            <View
+                android:background="#aaaaaa"
+                android:layout_width="match_parent"
+                android:layout_height="1px"></View>
+        </LinearLayout>
+
+
+        <!--ap信息 -->
+        <LinearLayout
+            android:paddingLeft="10dp"
+            android:paddingRight="10dp"
+            android:orientation="vertical"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
+
+            <LinearLayout
+                android:orientation="horizontal"
+                android:layout_width="match_parent"
+                android:layout_height="60dp">
+                <TextView
+                    android:textSize="14sp"
+                    android:text="@string/ap_xml_wifi_account_textview_msg"
+                    android:gravity="center_vertical"
+                    android:layout_width="wrap_content"
+                    android:layout_height="match_parent" />
+                <EditText
+                    android:id="@+id/wifi_ssid"
+                    android:gravity="right|center_vertical"
+                    android:textSize="14sp"
+                    android:hint="@string/ap_xml_wifi_account_edittext_hiht_msg"
+                    android:maxLines="1"
+                    android:singleLine="true"
+                    android:background="#ffffffff"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent" />
+            </LinearLayout>
+            <View
+                android:background="#aaaaaa"
+                android:layout_width="match_parent"
+                android:layout_height="1px"></View>
+
+            <LinearLayout
+                android:orientation="horizontal"
+                android:layout_width="match_parent"
+                android:layout_height="60dp">
+                <TextView
+                    android:textSize="14sp"
+                    android:text="@string/ap_xml_wifi_password_textview_msg"
+                    android:gravity="center_vertical"
+                    android:layout_width="wrap_content"
+                    android:layout_height="match_parent" />
+                <EditText
+                    android:id="@+id/wifi_password"
+                    android:gravity="right|center_vertical"
+                    android:textSize="14sp"
+                    android:hint="@string/ap_xml_wifi_password_edittext_hiht_msg"
+                    android:maxLines="1"
+                    android:singleLine="true"
+                    android:background="#ffffffff"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent" />
+            </LinearLayout>
+            <View
+                android:background="#aaaaaa"
+                android:layout_width="match_parent"
+                android:layout_height="1px"></View>
+
+            <TextView
+                android:layout_marginTop="10dp"
+                android:textSize="12sp"
+                android:paddingLeft="10dp"
+                android:paddingRight="10dp"
+                android:text="@string/ap_xml_device_status_msg"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content" />
+            <CheckBox
+                android:id="@+id/lamp_box"
+                android:layout_gravity="center_horizontal"
+                android:text="@string/ap_xml_device_lamp_on_msg"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content" />
+        </LinearLayout>
+
         <Button
-            android:background="@drawable/button_background"
+            android:id="@+id/next_"
             android:layout_marginLeft="10dp"
             android:layout_marginRight="10dp"
             android:layout_marginTop="20dp"
             android:textSize="14sp"
-            android:textColor="#ffffff"
-            android:text="@string/bind_xml_next_msg"
+            android:textColor="#aaaaaa"
+            android:background="@drawable/button_unavailable_background"
+            android:text="@string/ap_xml_next_msg"
             android:onClick="onNext"
             android:layout_width="match_parent"
             android:layout_height="50dp" />
-    </LinearLayout>
+
     </LinearLayout>
     </ScrollView>
 </LinearLayout>

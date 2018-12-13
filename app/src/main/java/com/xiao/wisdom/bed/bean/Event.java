@@ -24,4 +24,22 @@ public class Event {
             this.data = data;
         }
     }
+
+    public static class DeleteAccountEvent{
+        public LoginAccountBean accountBean;
+        public DeleteAccountEvent(LoginAccountBean accountBean){
+            this.accountBean = accountBean;
+        }
+    }
+
+    public static class SwitchInputAccountEvent{
+        public LoginAccountBean accountBean;
+        public SwitchInputAccountEvent(LoginAccountBean accountBean){
+            this.accountBean = accountBean;
+        }
+    }
+
+    public static class UpdateNickNameEvent{
+
+    }
 }

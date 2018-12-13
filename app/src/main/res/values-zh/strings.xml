@@ -31,8 +31,19 @@
 
     <!-- Menu List -->
     <string name="menu_list_1">重置密码</string>
-    <string name="menu_list_2">App使用教程</string>
-    <string name="menu_list_3">退出登录</string>
+    <string name="menu_list_2">安装教程</string>
+    <string name="menu_list_3">操作使用教程</string>
+    <string name="menu_list_4">关于我们</string>
+    <string name="menu_list_5">退出登录</string>
+
+    <!-- InstructionsActivity -->
+    <string name="is_xml_left_menu">返回</string>
+    <string name="is_xml_title_msg">软件使用说明</string>
+
+    <!-- InstructionsActivity -->
+    <string name="hwa_xml_left_menu">返回</string>
+    <string name="hwa_xml_title_msg">硬件使用说明</string>
+
 
     <!-- ApSettingActivity -->
     <string name="ap_activity_conn_msg">正在连接设备WIFI...</string>
@@ -54,10 +65,10 @@
     <string name="ap_activity_config_password_number_msg">正在尝试第[_number]次配置密码...</string>
     <string name="ap_activity_config_password_error">配置密码失败，请重试</string>
     <string name="ap_activity_device_online_success">设备上线成功</string>
-    <string name="ap_activity_device_online_error">设备上线失败，请确认设备已切换到网络设置状态，并且确认WIFI名和密码是否正确，然后请重试！</string>
-    <string name="ap_activity_no_search_wifi_msg">未找到设备WIFI，请重试</string>
+    <string name="ap_activity_device_online_error">设备绑定失败，请确认设备已切换到网络设置状态，并且确认WIFI名和密码是否正确，然后请重试！</string>
+    <string name="ap_activity_no_search_wifi_msg">未发现设备WIFI，请尝试手动连接</string>
     <string name="ap_activity_connect_wifi_success">连接设备WIFI成功</string>
-    <string name="ap_activity_connect_wifi_error">连接设备WIFI失败，请重试</string>
+    <string name="ap_activity_connect_wifi_error">连接设备WIFI失败，请尝试手动连接</string>
     <string name="ap_activity_open_wifi_msg">正在打开WIFI...</string>
     <string name="ap_activity_search_wifi_msg">正在查找设备WIFI...</string>
     <string name="ap_activity_connect_wifi_msg">正在连接设备WIFI...</string>
@@ -72,10 +83,10 @@
     <string name="ap_xml_wifi_password_edittext_hiht_msg">请输入家庭WiFi密码</string>
     <string name="ap_xml_device_status_msg">接通电源，确认设备处于待连接状态，绿灯长亮。按下右上角切换WiFi，选择hewei</string>
     <string name="ap_xml_device_lamp_on_msg">绿灯已亮起</string>
-    <string name="ap_xml_next_msg">下一步</string>
+    <string name="ap_xml_next_msg">绑定</string>
 
     <!-- BedDetailsActivity -->
-    <string name="details_activity_auto_calibration_msg">压力矫正</string>
+    <string name="details_activity_auto_calibration_msg">自动负荷矫正</string>
     <string name="details_activity_direction_convert_msg">切换正反转</string>
     <string name="details_activity_life_time_start_msg">电机寿命测试开始</string>
     <string name="details_activity_life_time_end_msg">电机寿命测试结束</string>
@@ -90,8 +101,8 @@
     <string name="details_unbind_error_msg">解绑失败，错误原因：绑定关系不存在</string>
     <string name="details_xml_left_menu">返回</string>
     <string name="details_xml_title">设备详情</string>
-    <string name="details_xml_right_menu">调试</string>
-    <string name="details_xml_device_info_sn_msg">设备SN号</string>
+    <string name="details_xml_right_menu">设置</string>
+    <string name="details_xml_device_info_sn_msg">设备序列号</string>
     <string name="details_xml_device_info_name_msg">设备名称</string>
     <string name="details_xml_device_info_nickname_msg">请输入该设备昵称</string>
     <string name="details_xml_device_temper_msg">温度</string>
@@ -114,7 +125,7 @@
     <string name="bind_activity_bind_error_msg">绑定失败，错误信息：设备已被绑定</string>
     <string name="bind_xml_left_menu">返回</string>
     <string name="bind_xml_title">添加设备</string>
-    <string name="bind_xml_device_sn_text_msg">设备SN号</string>
+    <string name="bind_xml_device_sn_text_msg">设备序列号</string>
     <string name="bind_xml_device_sn_hiht_msg">请输入设备SN号</string>
     <string name="bind_xml_device_cstname_text_msg">设备名称</string>
     <string name="bind_xml_device_cstname_hiht_msg">请输入设备名称</string>
@@ -215,7 +226,89 @@
     <string name="debug_activity_lifetime_val_error4_msg">请先开始电机寿命测试任务</string>
 
 
-    <!-- InstructionsActivity -->
-    <string name="is_xml_left_menu">返回</string>
-    <string name="is_xml_title_msg">使用说明</string>
+
+
+
+    <!-- 20181125 add -->
+    <string name="activity_login_account_checkbox_text">记住账号</string>
+    <string name="activity_login_password_checkbox_text">记住密码</string>
+    <string name="activity_login_auto_checkbox_text">自动登录</string>
+    <string name="activity_about_title">关于我们</string>
+    <string name="scan_activity_check_msg">请稍等</string>
+    <string name="scan_activity_error_1_msg">请重新扫描二维码</string>
+    <string name="scan_activity_error_4_msg">已经绑定该设备</string>
+    <string name="bind_activity_device_layout_title">设备信息</string>
+    <string name="bind_activity_ap_layout_title">家庭热点</string>
+    <string name="bind_activity_bind_message_1">正在配置...</string>
+    <string name="bind_activity_bind_sunccess_msg">绑定成功</string>
+
+    <string name="details_settings_menu_1_title">自动负荷校正</string>
+    <string name="details_send_auto_sunccess_msg">自动负荷校正请求成功</string>
+    <string name="details_send_auto_error_1_msg">自动负荷校正请求失败：未绑定该设备</string>
+    <string name="details_send_auto_error_2_msg">自动负荷校正请求失败：设备离线</string>
+
+    <string name="details_settings_menu_2_title">切换正反转</string>
+    <string name="details_send_convert_sunccess_msg">切换正反转请求成功</string>
+    <string name="details_send_convert_error_1_msg">切换正反转请求失败：未绑定该设备</string>
+    <string name="details_send_convert_error_2_msg">切换正反转请求失败：设备离线</string>
+
+    <string name="details_settings_menu_3_title">压力设置</string>
+    <string name="details_send_pressure_sunccess_msg">压力值设置成功</string>
+    <string name="details_send_pressure_error_1_msg">压力值设置失败：未绑定该设备</string>
+    <string name="details_send_pressure_error_2_msg">压力值设置失败：设备离线</string>
+
+    <string name="dialog_pressure_input_hint_msg">请输入需要配送的压力值（160-720）</string>
+    <string name="dialog_pressure_input_title_msg">压力值配送</string>
+    <string name="dialog_pressure_input_error_1_msg">请输入压力值</string>
+    <string name="dialog_pressure_input_error_2_msg">请输入正确的压力值</string>
+    <string name="dialog_auto_title_msg">提示</string>
+    <string name="dialog_auto_msg">正在自动负荷矫正，设备自动运行一个来回，期间请勿进行其它任何操作</string>
+    
+    <string name="debug_activity_pressure_msg">压力配置</string>
+    <string name="debug_activity_pressure_value_msg">压力值设置：</string>
+    <string name="debug_activity_pressure_hint_msg">范围160-720，默认为400</string>
+    <string name="debug_activity_pressure_error_1_msg">请输入压力值</string>
+    <string name="debug_activity_pressure_error_2_msg">请输入正确的压力值</string>
+
+    <string name="debug_activity_load_value_msg">负荷值设置：</string>
+    <string name="debug_activity_load_hint_msg">范围1200-2400，默认2100</string>
+    <string name="debug_activity_load_error_1_msg">请输入负荷值</string>
+    <string name="debug_activity_load_error_2_msg">请输入正确的负荷值</string>
+
+    <string name="debug_activity_auto_msg">自动负荷校正</string>
+
+    <string name="debug_activity_lifetime_msg">寿命配置</string>
+    <string name="debug_activity_frequency_value_msg">寿命次数设置：</string>
+    <string name="debug_activity_frequency_hint_msg">范围0-10000，默认0</string>
+    <string name="debug_activity_frequency_error_1_msg">请输入寿命次数</string>
+    <string name="debug_activity_frequency_error_2_msg">请输入正确的寿命次数</string>
+
+    <string name="debug_activity_interval_value_msg">寿命间隔设置：</string>
+    <string name="debug_activity_interval_hint_msg">范围1-10分钟，默认5分钟</string>
+    <string name="debug_activity_interval_error_1_msg">请输入寿命次数</string>
+    <string name="debug_activity_interval_error_2_msg">请输入正确的寿命次数</string>
+
+    <string name="debug_activity_lifetime_start_msg">寿命测试开始</string>
+    <string name="debug_activity_lifetime_end_msg">寿命测试结束</string>
+    <string name="debuf_activity_lifetime_test_state_msg">测试状态：</string>
+    <string name="debuf_activity_lifetime_test_count_msg">测试次数：</string>
+    <string name="debuf_activity_lifetime_test_time_msg">测试时间：</string>
+
+    <string name="debug_activity_convert_msg">正反转</string>
+    <string name="debug_activity_convert_text_msg">正反转切换</string>
+
+    <string name="login_register_quick_button_text">一键注册</string>
+    <string name="login_register_quick_error_1_text">注册失败</string>
+    <string name="login_register_quick_msg">正在注册...</string>
+    <string name="dialog_register_quick_user_msg">账户：</string>
+    <string name="dialog_register_quick_password_msg">密码：</string>
+    <string name="dialog_regiser_quick_login_msg">快速登录</string>
+    <string name="homeadapter_error_msg">请先解锁</string>
+    <string name="debug_activity_life_test_status_1_msg">正在测试</string>
+    <string name="debug_activity_life_test_status_2_msg">测试停止</string>
+    <string name="register_activity_nickname_hint_msg">请输入昵称</string>
+    <string name="register_activity_nickname_error_msg">请输入12位以内的昵称</string>
+    <string name="update_userinfo_activity_title_msg">修改个人信息</string>
+    <string name="update_userinfo_activity_success_msg">修改成功</string>
+    <string name="debug_activity_life_time_ms_msg"> 秒</string>
 </resources>

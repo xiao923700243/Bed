@@ -44,6 +44,7 @@ public abstract class BaseActivity extends Activity {
             onMessage(msg);
         }
     };
+    protected Context mContext;
 
     protected BedService bedService;
     private ServiceConnection connection = new ServiceConnection(){
@@ -65,6 +66,7 @@ public abstract class BaseActivity extends Activity {
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+        mContext = this;
         //设置布局
         setContentView(intiLayout());
         //bind服务类
@@ -145,6 +147,19 @@ public abstract class BaseActivity extends Activity {
             @Override
             public void run() {
                 Toast.makeText(BaseActivity.this,getResString(id),Toast.LENGTH_SHORT).show();
+            }
+        });
+    }
+
+    /**
+     * 显示long吐司
+     * @param id
+     */
+    public void showLongToast(final int id){
+        runOnUiThread(new Runnable() {
+            @Override
+            public void run() {
+                Toast.makeText(BaseActivity.this,getResString(id),Toast.LENGTH_LONG).show();
             }
         });
     }

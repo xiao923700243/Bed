@@ -78,23 +78,6 @@
             android:src="@mipmap/page009"
             android:layout_width="match_parent"
             android:layout_height="wrap_content" />
-        <ImageView
-            android:src="@mipmap/page010"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content" />
-        <ImageView
-            android:src="@mipmap/page011"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content" />
-        <ImageView
-            android:src="@mipmap/page012"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content" />
-        <ImageView
-            android:src="@mipmap/page013"
-            android:layout_marginBottom="20dp"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content" />
         </LinearLayout>
     </ScrollView>
 

@@ -75,8 +75,6 @@ public class HomeAdapter extends BaseAdapter{
             holder.rootView = convertView;
             holder.devNameIcon = convertView.findViewById(R.id.devidename_);
             holder.cstname = convertView.findViewById(R.id.cstname_);
-            holder.temperature = convertView.findViewById(R.id.temperature_);
-            holder.humidity = convertView.findViewById(R.id.humidity_);
             holder.up = convertView.findViewById(R.id.up_);
             holder.down = convertView.findViewById(R.id.down_);
             holder.stop = convertView.findViewById(R.id.stop_);
@@ -85,7 +83,7 @@ public class HomeAdapter extends BaseAdapter{
         } else {
             holder = (ViewHolder) convertView.getTag();
         }
-        holder.rootView.setOnClickListener(new View.OnClickListener() {
+        holder.devNameIcon.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
                 Intent intent = new Intent();
@@ -103,23 +101,16 @@ public class HomeAdapter extends BaseAdapter{
         });
         holder.devNameIcon.setImageResource(getSouresIdByName(result.data.get(i).devname));
         holder.cstname.setText(result.data.get(i).cstname+" "+getOnline(result.data.get(i).online));
-        if(result.data.get(i).temper<40){
-            holder.temperature.setTextColor(Color.parseColor("#FFCC33"));
-        }else{
-            holder.temperature.setTextColor(Color.parseColor("#FF0000"));
-        }
-        holder.temperature.setText(result.data.get(i).temper+"");
-        holder.humidity.setText(result.data.get(i).humidity+"");
 
         LampBean lamp = ShareUtils.getInstance(context).getLampAction(result.data.get(i).devid);
         if(lamp != null){
             if(System.currentTimeMillis() - lamp.lasttime > 2*1000){
-                holder.lamp.setImageResource(result.data.get(i).nlight == 0?R.mipmap.lamp_inactive:R.mipmap.lamp_active);
+                holder.lamp.setImageResource(result.data.get(i).lock == 0?R.mipmap.ic_lock:R.mipmap.ic_lock_focus);
             }else{
-                holder.lamp.setImageResource(lamp.status == 0?R.mipmap.lamp_inactive:R.mipmap.lamp_active);
+                holder.lamp.setImageResource(lamp.status == 0?R.mipmap.ic_lock:R.mipmap.ic_lock_focus);
             }
         }else{
-            holder.lamp.setImageResource(result.data.get(i).nlight == 0?R.mipmap.lamp_inactive:R.mipmap.lamp_active);
+            holder.lamp.setImageResource(result.data.get(i).lock == 0?R.mipmap.ic_lock:R.mipmap.ic_lock_focus);
         }
         holder.lamp.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -135,8 +126,8 @@ public class HomeAdapter extends BaseAdapter{
                             ShareUtils.getInstance(context).setLampAction(result.data.get(i).devid,obtainLampAction(result.data.get(i).devid,0));
                         }
                     }else{
-                        sendCmd(result.data.get(i).nlight==0?BedUtils.CMD_LED_ON:BedUtils.CMD_LED_OFF,result.data.get(i).devid);
-                        ShareUtils.getInstance(context).setLampAction(result.data.get(i).devid,obtainLampAction(result.data.get(i).devid,result.data.get(i).nlight==0?1:0));
+                        sendCmd(result.data.get(i).lock==0?BedUtils.CMD_LED_ON:BedUtils.CMD_LED_OFF,result.data.get(i).devid);
+                        ShareUtils.getInstance(context).setLampAction(result.data.get(i).devid,obtainLampAction(result.data.get(i).devid,result.data.get(i).lock==0?1:0));
                     }
                 }else{
                     Toast.makeText(context,getResString(R.string.home_activbity_send_error_off_line_msg),Toast.LENGTH_SHORT).show();
@@ -158,6 +149,10 @@ public class HomeAdapter extends BaseAdapter{
         holder.up.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
+                if(result.data.get(i).lock == 1){
+                    Toast.makeText(context,getResString(R.string.homeadapter_error_msg),Toast.LENGTH_SHORT).show();
+                    return;
+                }
                 if(result.data.get(i).online == 1){
                     //在线
                     ShareUtils.getInstance(context).setMoveAction(result.data.get(i).devid,obtainAction(result.data.get(i).devid,"U"));
@@ -178,6 +173,10 @@ public class HomeAdapter extends BaseAdapter{
         holder.down.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
+                if(result.data.get(i).lock == 1){
+                    Toast.makeText(context,getResString(R.string.homeadapter_error_msg),Toast.LENGTH_SHORT).show();
+                    return;
+                }
                 if(result.data.get(i).online == 1){
                     //在线
                     ShareUtils.getInstance(context).setMoveAction(result.data.get(i).devid,obtainAction(result.data.get(i).devid,"D"));
@@ -198,11 +197,15 @@ public class HomeAdapter extends BaseAdapter{
         holder.stop.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
+                if(result.data.get(i).lock == 1){
+                    Toast.makeText(context,getResString(R.string.homeadapter_error_msg),Toast.LENGTH_SHORT).show();
+                    return;
+                }
                 if(result.data.get(i).online == 1){
                     //在线
                     ShareUtils.getInstance(context).setMoveAction(result.data.get(i).devid,obtainAction(result.data.get(i).devid,"S"));
                 }
-                sendCmd(BedUtils.CMD_MOTOR_PAUSE,result.data.get(i).devid);
+                sendCmd(BedUtils.CMD_MOTOR_STOP,result.data.get(i).devid);
             }
         });
 
@@ -256,8 +259,6 @@ public class HomeAdapter extends BaseAdapter{
         View rootView;
         CircleImageView devNameIcon;
         TextView cstname;
-        TextView temperature;
-        TextView humidity;
         ImageView up;
         ImageView down;
         ImageView stop;

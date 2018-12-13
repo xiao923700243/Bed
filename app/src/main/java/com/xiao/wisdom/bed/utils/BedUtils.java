@@ -8,6 +8,7 @@ import android.net.wifi.WifiManager;
 import android.provider.Settings;
 import android.text.TextUtils;
 import android.util.Log;
+import android.view.View;
 
 import com.xiao.wisdom.bed.R;
 
@@ -25,23 +26,32 @@ public class BedUtils {
 
     public static final String CMD_MOTOR_UP = "CMD_MOTOR_UP";
     public static final String CMD_MOTOR_DOWN  = "CMD_MOTOR_DOWN";
-    public static final String CMD_MOTOR_PAUSE = "CMD_MOTOR_PAUSE";
+    public static final String CMD_MOTOR_STOP = "CMD_MOTOR_STOP";
     public static final String CMD_DIRECTION_CONVERT = "CMD_DIRECTION_CONVERT";
-    public static final String CMD_LED_ON = "CMD_LED_ON";
-    public static final String CMD_LED_OFF = "CMD_LED_OFF";
+    public static final String CMD_LED_ON = "CMD_LOCK_ON";
+    public static final String CMD_LED_OFF = "CMD_LOCK_OFF";
     public static final String CMD_PRESSURE_TEST = "CMD_PRESSURE_TEST_[val]_#*#*$OK";
     public static final String CMD_PRESSURE_AUTO_CALIBRATION = "CMD_PRESSURE_AUTO_CALIBRATION";
+    public static final String CMD_AUTO_LOAD_CALIBRATION = "CMD_AUTO_LOAD_CALIBRATION";
     public static final String CMD_READ_ALL = "CMD_READ_ALL";
     public static final String CMD_LIFE_TIME_TEST_START = "CMD_LIFE_TIME_TEST_START";
     public static final String CMD_LIFE_TIME_TEST_FINISH = "CMD_LIFE_TIME_TEST_FINISH";
     public static final String CMD_LIFE_TIME_VAL = "CMD_LIFE_TIME_TEST_[val]_#*#*$OK";
     public static final String CMD_SEND_TIME_XX_XX_XX_XX_XX_XX = "CMD_SEND_TIME_YY_mm_DD_HH_MM_SS";
+                                                   //RSP_SSID_NAME_END
     public static final String RSP_SSID_NAME_END = "RSP_SSID_NAME_END";
     public static final String RSP_PASSWORD_END = "RSP_PASSWORD_END";
     public static final String CMD_SEND_SSID_NAME_END = "CMD_SSID_NAME_[ssid]_#*#*$OK";
     public static final String CMD_SEND_PASSWORD_END = "CMD_PASSWORD_[password]_#*#*$OK";
     public static final String RSP_SSID_PASSWORD_CONFIG_END = "RSP_SSID_PASSWORD_CONFIG_END";
+    public static final String CMD_LOAD_SET_PRESSURE = "STR_CMD_LOAD_SET_[load]_#*#*$OK";
+    public static final String CMD_LIFE_TIME_TEST_INIT = "CMD_LIFE_TIME_TEST_INIT_[count]_#*#*$OK";
+    public static final String CMD_PRESSURE_SET = "CMD_PRESSURE_SET_[Pressure]_#*#*$OK";
+    public static final String CMD_LIFE_TIME_TEST_INTERVAL = "CMD_LIFE_TIME_TEST_INTERVAL_[interval]_#*#*$OK";
     public static final String CHECK_PASSWORD = "herway";
+    public static final String ABOUT_SERVICE_ADDRESS = "http://www.herwayfurniture.com/";
+    public static final String CONFIG_DEVICE_HOST = "192.168.1.142";//192.168.1.168
+    public static final int CONFIG_DEVICE_PORT = 8080;//192.168.1.168
 
     /**
      * 判断网络状态
@@ -191,5 +201,16 @@ public class BedUtils {
 
         }
         return null;
+    }
+
+    /**
+     * 测量View的宽高
+     *
+     * @param view View
+     */
+    public static void measureWidthAndHeight(View view) {
+        int widthMeasureSpec = View.MeasureSpec.makeMeasureSpec(0, View.MeasureSpec.UNSPECIFIED);
+        int heightMeasureSpec = View.MeasureSpec.makeMeasureSpec(0, View.MeasureSpec.UNSPECIFIED);
+        view.measure(widthMeasureSpec, heightMeasureSpec);
     }
 }

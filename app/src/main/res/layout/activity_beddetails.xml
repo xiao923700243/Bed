@@ -37,7 +37,7 @@
 
             <TextView
                 android:textSize="@dimen/menu_text_font_size"
-                android:onClick="onCheckIdentity"
+                android:onClick="onDebug"
                 android:text="@string/details_xml_right_menu"
                 android:textColor="#FFFFFF"
                 android:layout_marginRight="10dp"
@@ -55,6 +55,7 @@
                 android:layout_width="match_parent"
                 android:layout_height="match_parent">
                 <ImageView
+                    android:id="@+id/details_info_image"
                     android:scaleType="fitXY"
                     android:src="@mipmap/ic_add_image"
                     android:layout_width="match_parent"
@@ -120,158 +121,37 @@
                     android:background="#c9c9c9"
                     android:layout_width="match_parent"
                     android:layout_height="1px"></View>
-                <!--
-                    <LinearLayout
-                        android:background="#ffffff"
-                        android:layout_width="match_parent"
-                        android:orientation="horizontal"
-                        android:layout_height="60dp">
-                        <TextView
-                            android:text="设备类型"
-                            android:textSize="12sp"
-                            android:gravity="center_vertical"
-                            android:paddingLeft="10dp"
-                            android:layout_width="wrap_content"
-                            android:layout_height="match_parent" />
-                        <TextView
-                            android:id="@+id/devide_devname"
-                            android:onClick="onDeviceName"
-                            android:gravity="right|center_vertical"
-                            android:textSize="12sp"
-                            android:paddingRight="10dp"
-                            android:paddingLeft="10dp"
-                            android:maxLines="1"
-                            android:singleLine="true"
-                            android:background="#ffffffff"
-                            android:layout_width="match_parent"
-                            android:layout_height="match_parent" />
-                    </LinearLayout>
-                    <View
-                        android:background="#c9c9c9"
-                        android:layout_width="match_parent"
-                        android:layout_height="1px"></View>
-
-
 
                 <LinearLayout
                     android:background="#ffffff"
-                    android:layout_width="match_parent"
                     android:orientation="horizontal"
-                    android:layout_height="60dp">
-                    <TextView
-                        android:text="设备通讯方式"
-                        android:textSize="12sp"
-                        android:gravity="center_vertical"
-                        android:paddingLeft="10dp"
-                        android:layout_width="wrap_content"
-                        android:layout_height="match_parent" />
-                    <TextView
-                        android:id="@+id/devide_devtype"
-                        android:onClick="onDeviceType"
-                        android:gravity="right|center_vertical"
-                        android:textSize="12sp"
-                        android:paddingRight="10dp"
-                        android:paddingLeft="10dp"
-                        android:maxLines="1"
-                        android:singleLine="true"
-                        android:background="#ffffffff"
-                        android:layout_width="match_parent"
-                        android:layout_height="match_parent" />
-                </LinearLayout>
-                <View
-                    android:background="#c9c9c9"
-                    android:layout_width="match_parent"
-                    android:layout_height="1px"></View>
-                    -->
-
-                <LinearLayout
-                    android:background="#ffffff"
-                    android:layout_width="match_parent"
-                    android:orientation="horizontal"
-                    android:layout_height="60dp">
-                    <TextView
-                        android:text="@string/details_xml_device_temper_msg"
-                        android:textSize="12sp"
-                        android:gravity="center_vertical"
-                        android:paddingLeft="10dp"
-                        android:layout_width="wrap_content"
-                        android:layout_height="match_parent" />
-                    <TextView
-                        android:id="@+id/device_temper"
-                        android:gravity="right|center_vertical"
-                        android:textSize="12sp"
-                        android:paddingRight="10dp"
-                        android:paddingLeft="10dp"
-                        android:maxLines="1"
-                        android:singleLine="true"
-                        android:background="#ffffffff"
-                        android:layout_width="match_parent"
-                        android:layout_height="match_parent" />
-                </LinearLayout>
-                <View
-                    android:background="#c9c9c9"
-                    android:layout_width="match_parent"
-                    android:layout_height="1px"></View>
-
-
-                <LinearLayout
-                    android:background="#ffffff"
-                    android:layout_width="match_parent"
-                    android:orientation="horizontal"
-                    android:layout_height="60dp">
-                    <TextView
-                        android:text="@string/details_xml_device_humidity_msg"
-                        android:textSize="12sp"
-                        android:gravity="center_vertical"
-                        android:paddingLeft="10dp"
-                        android:layout_width="wrap_content"
-                        android:layout_height="match_parent" />
-                    <TextView
-                        android:id="@+id/device_humidity"
-                        android:gravity="right|center_vertical"
-                        android:textSize="12sp"
-                        android:paddingRight="10dp"
-                        android:paddingLeft="10dp"
-                        android:maxLines="1"
-                        android:singleLine="true"
-                        android:background="#ffffffff"
-                        android:layout_width="match_parent"
-                        android:layout_height="match_parent" />
-                </LinearLayout>
-                <View
-                    android:background="#c9c9c9"
-                    android:layout_width="match_parent"
-                    android:layout_height="1px"></View>
-
-                <LinearLayout
-                    android:background="#ffffff"
-                    android:orientation="vertical"
                     android:layout_marginBottom="50dp"
                     android:layout_width="match_parent"
                     android:layout_height="match_parent">
                     <Button
+                        android:background="@drawable/button_unbind"
+                        android:layout_marginLeft="10dp"
+                        android:layout_marginRight="5dp"
+                        android:layout_marginTop="20dp"
+                        android:textSize="14sp"
+                        android:textColor="#000000"
+                        android:text="@string/public_cancel_msg"
+                        android:onClick="onExit"
+                        android:layout_weight="1"
+                        android:layout_width="0dp"
+                        android:layout_height="50dp" />
+
+                    <Button
                         android:background="@drawable/button_background"
                         android:layout_marginLeft="10dp"
-                        android:layout_marginRight="10dp"
+                        android:layout_marginRight="5dp"
                         android:layout_marginTop="20dp"
                         android:textSize="14sp"
                         android:textColor="#ffffff"
                         android:text="@string/details_xml_save_msg"
                         android:onClick="onSave"
-                        android:layout_width="match_parent"
-                        android:layout_height="50dp" />
-
-
-                    <Button
-                        android:background="@drawable/button_unbind"
-                        android:layout_marginLeft="10dp"
-                        android:layout_marginRight="10dp"
-                        android:layout_marginTop="20dp"
-                        android:textSize="14sp"
-                        android:textColor="#000000"
-                        android:text="@string/details_xml_unbind_msg"
-                        android:onClick="unBindDervice"
-                        android:layout_width="match_parent"
+                        android:layout_weight="1"
+                        android:layout_width="0dp"
                         android:layout_height="50dp" />
                 </LinearLayout>
             </LinearLayout>

@@ -37,7 +37,7 @@
     </RelativeLayout>
 
     <ScrollView
-        android:background="#ffffff"
+        android:background="#EAEAEA"
         android:layout_width="match_parent"
         android:layout_height="match_parent">
         <LinearLayout
@@ -45,126 +45,389 @@
             android:layout_width="match_parent"
             android:layout_height="match_parent">
 
-            <ImageView
-                android:layout_marginTop="30dp"
-                android:layout_marginBottom="30dp"
-                android:src="@mipmap/ic_logo"
-                android:layout_gravity="center_horizontal"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content" />
-
-            <TextView
-                android:layout_marginLeft="20dp"
-                android:textSize="20sp"
-                android:text="@string/debug_xml_pressure_test_msg"
-                android:layout_width="match_parent"
-                android:layout_height="50dp" />
-            <EditText
-                android:layout_marginRight="20dp"
-                android:layout_marginLeft="20dp"
-                android:inputType="number"
-                android:id="@+id/pressure_value_"
-                android:hint="@string/debug_xml_pressure_hiht_msg"
-                android:layout_width="match_parent"
-                android:layout_height="match_parent" />
-
-            <Button
-                android:background="@drawable/button_background"
-                android:layout_marginLeft="10dp"
-                android:layout_marginRight="10dp"
-                android:textSize="14sp"
-                android:textColor="#ffffff"
-                android:text="@string/debug_xml_pressure_start_msg"
-                android:onClick="onPressure"
-                android:layout_width="match_parent"
-                android:layout_height="50dp" />
-
-
-            <TextView
-                android:layout_marginLeft="20dp"
-                android:layout_marginTop="40dp"
-                android:textSize="20sp"
-                android:text="@string/debug_xml_direction_msg"
-                android:layout_width="match_parent"
-                android:layout_height="50dp" />
-
-            <Button
-                android:background="@drawable/button_background"
-                android:layout_marginLeft="10dp"
-                android:layout_marginRight="10dp"
-                android:textSize="14sp"
-                android:textColor="#ffffff"
-                android:text="@string/debug_xml_direction_button_msg"
-                android:onClick="onDirectionSwitch"
-                android:layout_width="match_parent"
-                android:layout_height="50dp" />
-
-            <TextView
-                android:layout_marginLeft="20dp"
-                android:layout_marginTop="40dp"
-                android:textSize="20sp"
-                android:text="@string/debug_xml_lifetime_test_msg"
-                android:layout_width="match_parent"
-                android:layout_height="50dp" />
-
             <LinearLayout
+                android:background="@drawable/activity_debug_layout_background"
+                android:orientation="vertical"
+                android:layout_margin="10dp"
                 android:layout_width="match_parent"
-                android:orientation="horizontal"
-                android:layout_marginLeft="10dp"
-                android:layout_marginRight="10dp"
-                android:layout_marginBottom="30dp"
-                android:layout_height="50dp">
-                <Button
-                    android:onClick="onStartLifeTime"
-                    android:background="@drawable/button_background"
-                    android:text="@string/debug_xml_lifetime_start_msg"
-                    android:layout_marginRight="5dp"
-                    android:layout_width="0dp"
-                    android:layout_weight="1"
-                    android:textSize="14sp"
-                    android:textColor="#ffffff"
-                    android:layout_height="match_parent" />
-                <Button
-                    android:text="@string/debug_xml_lifetime_end_msg"
-                    android:onClick="onEndLifeTime"
-                    android:background="@drawable/button_background"
-                    android:layout_marginLeft="5dp"
-                    android:layout_width="0dp"
-                    android:layout_weight="1"
-                    android:textSize="14sp"
-                    android:textColor="#ffffff"
-                    android:layout_height="match_parent" />
+                android:layout_height="wrap_content">
+                <TextView
+                    android:layout_marginLeft="10dp"
+                    android:gravity="center_vertical"
+                    android:textSize="12sp"
+                    android:text="@string/debug_activity_lifetime_msg"
+                    android:textStyle="bold"
+                    android:textColor="#000000"
+                    android:layout_width="match_parent"
+                    android:layout_height="30dp" />
+                <RelativeLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="50dp">
+                    <LinearLayout
+                        android:orientation="horizontal"
+                        android:layout_marginRight="60dp"
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent">
+                        <TextView
+                            android:layout_marginLeft="10dp"
+                            android:text="@string/debug_activity_frequency_value_msg"
+                            android:textSize="14sp"
+                            android:layout_gravity="center_vertical"
+                            android:gravity="center_vertical"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            />
+                        <EditText
+                            android:id="@+id/frequency_value"
+                            android:inputType="number"
+                            android:maxLength="5"
+                            android:layout_gravity="center_vertical"
+                            android:background="#ffffffff"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:textSize="14sp"
+                            android:hint="@string/debug_activity_frequency_hint_msg"
+                            />
+                    </LinearLayout>
+                    <Button
+                        android:id="@+id/frequency_button"
+                        android:layout_marginRight="10dp"
+                        android:layout_centerVertical="true"
+                        android:text="@string/public_confirm_msg"
+                        android:layout_width="60dp"
+                        android:layout_height="33dp"
+                        android:layout_alignParentRight="true"
+                        android:background="@drawable/button_background"
+                        />
+                </RelativeLayout>
+
+                <View
+                    android:layout_marginLeft="10dp"
+                    android:layout_marginRight="10dp"
+                    android:background="#aaaaaa"
+                    android:layout_width="match_parent"
+                    android:layout_height="1px"></View>
+
+                <RelativeLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="50dp">
+                    <LinearLayout
+                        android:orientation="horizontal"
+                        android:layout_marginRight="60dp"
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent">
+                        <TextView
+                            android:layout_marginLeft="10dp"
+                            android:text="@string/debug_activity_interval_value_msg"
+                            android:textSize="14sp"
+                            android:layout_gravity="center_vertical"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            />
+                        <EditText
+                            android:id="@+id/interval_value"
+                            android:inputType="number"
+                            android:maxLength="2"
+                            android:background="#ffffffff"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_gravity="center_vertical"
+                            android:textSize="14sp"
+                            android:hint="@string/debug_activity_interval_hint_msg"
+                            />
+                    </LinearLayout>
+                    <Button
+                        android:layout_alignParentRight="true"
+                        android:layout_centerVertical="true"
+                        android:id="@+id/interval_button"
+                        android:layout_marginRight="10dp"
+                        android:text="@string/public_confirm_msg"
+                        android:layout_width="60dp"
+                        android:layout_height="33dp"
+                        android:background="@drawable/button_background"
+                        />
+                </RelativeLayout>
+                <View
+                    android:layout_marginLeft="10dp"
+                    android:layout_marginRight="10dp"
+                    android:background="#aaaaaa"
+                    android:layout_width="match_parent"
+                    android:layout_height="1px"></View>
+                <LinearLayout
+                    android:gravity="center_vertical"
+                    android:layout_width="match_parent"
+                    android:layout_height="50dp">
+
+                        <Button
+                            android:id="@+id/lifetime_start"
+                            android:layout_marginRight="5dp"
+                            android:layout_marginLeft="10dp"
+                            android:text="@string/debug_activity_lifetime_start_msg"
+                            android:layout_weight="1"
+                            android:layout_width="0dp"
+                            android:layout_height="33dp"
+                            android:background="@drawable/button_background"
+                            />
+                        <Button
+                            android:id="@+id/lifetime_end"
+                            android:layout_marginLeft="5dp"
+                            android:layout_marginRight="10dp"
+                            android:text="@string/debug_activity_lifetime_end_msg"
+                            android:layout_weight="1"
+                            android:layout_width="0dp"
+                            android:layout_height="33dp"
+                            android:background="@drawable/button_unbind"
+                            />
+                </LinearLayout>
+                <View
+                    android:layout_marginLeft="10dp"
+                    android:layout_marginRight="10dp"
+                    android:background="#aaaaaa"
+                    android:layout_width="match_parent"
+                    android:layout_height="1px"></View>
+                <LinearLayout
+                    android:orientation="vertical"
+                    android:background="@drawable/debug_display_background"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content">
+                    <LinearLayout
+                        android:gravity="center_vertical"
+                        android:layout_width="match_parent"
+                        android:layout_height="50dp">
+                        <TextView
+                            android:textColor="#ffffff"
+                            android:layout_marginLeft="10dp"
+                            android:text="@string/debuf_activity_lifetime_test_state_msg"
+                            android:textSize="14sp"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content" />
+                        <TextView
+                            android:textColor="#ffffff"
+                            android:id="@+id/lifetime_state"
+                            android:textSize="14sp"
+                            android:gravity="center"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content" />
+                    </LinearLayout>
+                    <LinearLayout
+                        android:gravity="center_vertical"
+                        android:layout_width="match_parent"
+                        android:layout_height="50dp">
+                        <TextView
+                            android:textColor="#ffffff"
+                            android:layout_marginLeft="10dp"
+                            android:text="@string/debuf_activity_lifetime_test_count_msg"
+                            android:textSize="14sp"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content" />
+                        <TextView
+                            android:textColor="#ffffff"
+                            android:id="@+id/lifetime_count"
+                            android:textSize="14sp"
+                            android:gravity="center"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content" />
+                    </LinearLayout>
+                    <LinearLayout
+                        android:gravity="center_vertical"
+                        android:layout_width="match_parent"
+                        android:layout_height="50dp">
+                        <TextView
+                            android:textColor="#ffffff"
+                            android:layout_marginLeft="10dp"
+                            android:text="@string/debuf_activity_lifetime_test_time_msg"
+                            android:textSize="14sp"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content" />
+                        <TextView
+                            android:textColor="#ffffff"
+                            android:id="@+id/lifetime_time"
+                            android:textSize="14sp"
+                            android:gravity="center"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content" />
+                    </LinearLayout>
+                </LinearLayout>
             </LinearLayout>
 
-
-            <TextView
-                android:layout_marginLeft="20dp"
-                android:layout_marginTop="10dp"
-                android:textSize="20sp"
-                android:text="@string/debug_xml_lefetime_test_time_msg"
+            <LinearLayout
+                android:background="@drawable/activity_debug_layout_background"
+                android:orientation="vertical"
+                android:layout_margin="10dp"
                 android:layout_width="match_parent"
-                android:layout_height="50dp" />
+                android:layout_height="wrap_content">
+                <TextView
+                    android:layout_marginLeft="10dp"
+                    android:gravity="center_vertical"
+                    android:textSize="12sp"
+                    android:text="@string/debug_activity_pressure_msg"
+                    android:textStyle="bold"
+                    android:textColor="#000000"
+                    android:layout_width="match_parent"
+                    android:layout_height="30dp" />
 
-            <EditText
-                android:layout_marginRight="20dp"
-                android:layout_marginLeft="20dp"
-                android:id="@+id/lifetime_value_"
-                android:hint="@string/debug_xml_lifetime_hiht_msg"
-                android:layout_width="match_parent"
-                android:layout_height="match_parent" />
+                <RelativeLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="50dp">
+                    <LinearLayout
+                        android:layout_marginRight="60dp"
+                        android:orientation="horizontal"
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent">
+                        <TextView
+                            android:layout_marginLeft="10dp"
+                            android:text="@string/debug_activity_pressure_value_msg"
+                            android:textSize="14sp"
+                            android:layout_gravity="center_vertical"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            />
+                        <EditText
+                            android:id="@+id/pressure_value"
+                            android:background="#ffffffff"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_gravity="center_vertical"
+                            android:textSize="14sp"
+                            android:inputType="number"
+                            android:maxLength="3"
+                            android:hint="@string/debug_activity_pressure_hint_msg"
+                            />
+                    </LinearLayout>
 
-            <Button
-                android:background="@drawable/button_background"
-                android:layout_marginLeft="10dp"
+                    <Button
+                        android:id="@+id/pressure_button"
+                        android:layout_marginRight="10dp"
+                        android:layout_alignParentRight="true"
+                        android:layout_centerVertical="true"
+                        android:text="@string/public_confirm_msg"
+                        android:layout_width="60dp"
+                        android:layout_height="33dp"
+                        android:background="@drawable/button_background"
+                        />
+                </RelativeLayout>
+                <View
+                    android:layout_marginLeft="10dp"
+                    android:layout_marginRight="10dp"
+                    android:background="#aaaaaa"
+                    android:layout_width="match_parent"
+                    android:layout_height="1px"></View>
+
+                <RelativeLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="50dp">
+                    <LinearLayout
+                        android:orientation="horizontal"
+                        android:layout_marginRight="60dp"
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent">
+                        <TextView
+                            android:layout_marginLeft="10dp"
+                            android:text="@string/debug_activity_load_value_msg"
+                            android:textSize="14sp"
+                            android:layout_gravity="center_vertical"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            />
+
+                        <EditText
+                            android:id="@+id/load_value"
+                            android:inputType="number"
+                            android:maxLength="4"
+                            android:layout_gravity="center_vertical"
+                            android:background="#ffffffff"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:textSize="14sp"
+                            android:hint="@string/debug_activity_load_hint_msg"
+                            />
+                    </LinearLayout>
+                    <Button
+                        android:id="@+id/load_button"
+                        android:layout_centerVertical="true"
+                        android:layout_alignParentRight="true"
+                        android:layout_marginRight="10dp"
+                        android:text="@string/public_confirm_msg"
+                        android:layout_width="60dp"
+                        android:layout_height="33dp"
+                        android:background="@drawable/button_background"
+                        />
+                </RelativeLayout>
+                <View
+                    android:layout_marginLeft="10dp"
+                    android:layout_marginRight="10dp"
+                    android:background="#aaaaaa"
+                    android:layout_width="match_parent"
+                    android:layout_height="1px"></View>
+
+                <TableLayout
+                    android:stretchColumns  = "0"
+                    android:gravity="center_vertical"
+                    android:layout_width="match_parent"
+                    android:layout_height="50dp">
+                    <TableRow>
+                        <TextView
+                            android:layout_marginLeft="10dp"
+                            android:text="@string/debug_activity_auto_msg"
+                            android:textSize="14sp"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            />
+                        <Button
+                            android:id="@+id/auto_button"
+                            android:layout_marginRight="10dp"
+                            android:text="@string/public_confirm_msg"
+                            android:layout_width="60dp"
+                            android:layout_height="33dp"
+                            android:background="@drawable/button_background"
+                            />
+                    </TableRow>
+                </TableLayout>
+            </LinearLayout>
+
+            <LinearLayout
+                android:background="@drawable/activity_debug_layout_background"
+                android:orientation="vertical"
+                android:layout_marginBottom="20dp"
                 android:layout_marginRight="10dp"
-                android:textSize="14sp"
-                android:textColor="#ffffff"
-                android:text="@string/debug_xml_lefttime_time_button_msg"
-                android:onClick="onUpdateTime"
+                android:layout_marginLeft="10dp"
+                android:layout_marginTop="10dp"
                 android:layout_width="match_parent"
-                android:layout_marginBottom="30dp"
-                android:layout_height="50dp" />
+                android:layout_height="wrap_content">
+                <TextView
+                    android:layout_marginLeft="10dp"
+                    android:gravity="center_vertical"
+                    android:textSize="12sp"
+                    android:text="@string/debug_activity_convert_msg"
+                    android:textStyle="bold"
+                    android:textColor="#000000"
+                    android:layout_width="match_parent"
+                    android:layout_height="30dp" />
 
+                <TableLayout
+                    android:stretchColumns  = "0"
+                    android:gravity="center_vertical"
+                    android:layout_width="match_parent"
+                    android:layout_height="50dp">
+                    <TableRow>
+                        <TextView
+                            android:layout_marginLeft="10dp"
+                            android:text="@string/debug_activity_convert_text_msg"
+                            android:textSize="14sp"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            />
+                        <Button
+                            android:id="@+id/convert_button"
+                            android:layout_marginRight="10dp"
+                            android:text="@string/public_confirm_msg"
+                            android:layout_width="60dp"
+                            android:layout_height="33dp"
+                            android:background="@drawable/button_background"
+                            />
+                    </TableRow>
+                </TableLayout>
+            </LinearLayout>
         </LinearLayout>
     </ScrollView>
 

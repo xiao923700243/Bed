@@ -16,6 +16,7 @@ import com.xiao.wisdom.bed.utils.BedUtils;
 
 public class RegisterActivity extends BaseActivity {
     private EditText userEdit;
+    private EditText nickname;
     private EditText pwdEdit;
     private EditText checkEdit;
     private ImageView checkImage;
@@ -32,6 +33,7 @@ public class RegisterActivity extends BaseActivity {
         pwdEdit = findViewById(R.id.password_);
         checkEdit = findViewById(R.id.check_edit);
         checkImage = findViewById(R.id.check_image);
+        nickname = findViewById(R.id.nickname_);
     }
 
     @Override
@@ -52,6 +54,12 @@ public class RegisterActivity extends BaseActivity {
             showToast(R.string.register_activity_account_input_error_msg);
            return;
         }
+        String strNickName = nickname.getText().toString().trim();
+        if(strNickName == null || strNickName.length()<=0 || strNickName.length()>12){
+            showToast(R.string.register_activity_nickname_error_msg);
+            return;
+        }
+        strNickName = BedUtils.getUtf8String(strNickName);
         String strPwd = pwdEdit.getText().toString().trim();
         if(strPwd == null || strPwd.length()<6 || strPwd.length()>12){
             showToast(R.string.register_activity_password_input_error_msg);
@@ -64,7 +72,7 @@ public class RegisterActivity extends BaseActivity {
         }
 
         showWaitMsg(getResString(R.string.register_activity_register_msg));
-        bedService.registerUser(BedUtils.getImei(this),strUser,strPwd,strCheck,mHandler);
+        bedService.registerUser(BedUtils.getImei(this),strUser,strPwd,strCheck,strNickName,mHandler);
 
     }
 

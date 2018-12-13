@@ -34,7 +34,6 @@ public abstract class OkRequest {
     protected OkRequest(String url, String tag, Headers headers, RequestParams params) {
         requestClient = RequestClient.getInstance();
         okHttpClient = requestClient.getOkHttpClient();
-
         this.url = url;
         this.tag = tag;
         this.headers = headers == null ? new Headers.Builder().build(): headers;

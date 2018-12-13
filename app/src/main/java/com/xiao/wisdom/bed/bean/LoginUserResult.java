@@ -10,4 +10,10 @@ import java.util.List;
 public class LoginUserResult implements Serializable{
     public String status;
     public String msg;
+    public Data data;
+    public class Data{
+        public String name;
+        public String nickname;
+        public int ret;
+    }
 }

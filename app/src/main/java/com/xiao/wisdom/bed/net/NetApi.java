@@ -8,9 +8,11 @@ import com.xiao.wisdom.bed.bean.ChengeDeviceInfoResult;
 import com.xiao.wisdom.bed.bean.GetDevStatsResult;
 import com.xiao.wisdom.bed.bean.GetUserAllDevStatsResult;
 import com.xiao.wisdom.bed.bean.LoginUserResult;
+import com.xiao.wisdom.bed.bean.QuickRegiserResult;
 import com.xiao.wisdom.bed.bean.RegisterResult;
 import com.xiao.wisdom.bed.bean.SendCmdResult;
 import com.xiao.wisdom.bed.bean.ChengeUserPasswordResult;
+import com.xiao.wisdom.bed.bean.UpdateUserInfoResult;
 import com.xiao.wisdom.bed.bean.disBindUserDeviceResult;
 import com.xiao.wisdom.bed.net.base.OkRequest;
 import com.xiao.wisdom.bed.net.base.RequestParams;
@@ -34,9 +36,19 @@ public class NetApi extends UrlTool{
     public static final String Register_Address = "/smartdev/registerUser";
     public static final String ChangePassword_Address = "/smartdev/chengeUserPassword";
     public static final String BindDevice_Address = "/smartdev/bindUserDevice";
+    public static final String BindDevice_Signle = "/smartdev/bindUserDeviceSingle";
     public static final String UnBindDervice_Address = "/smartdev/disBindUserDevice";
     public static final String GetUserAllDevStats_Address = "/smartdev/getUserAllDevStats";
     public static final String ChengeDeviceInfo_Address = "/smartdev/chengeDeviceInfo";
+    public static final String Quick_Regiser_Address = "/smartdev/quickregister";
+    public static final String Change_User_Info_Address = "/smartdev/changeUserInfo";
+
+    public static void quickRegiser(String imei,ResultCallBack<QuickRegiserResult> callBack){
+        RequestParams params = RequestParams.newInstance()
+                .put("imei", imei);
+        String url = Service_Address+Quick_Regiser_Address;
+        new OkRequest.Builder().url(url).params(params).get(callBack);
+    }
 
     /**
      * 发送指令
@@ -51,7 +63,7 @@ public class NetApi extends UrlTool{
                 .put("devid",devid)
                 .put("cmd",cmd);
         String url = Service_Address+SendCmd_Address;
-        new OkRequest.Builder().url(url).params(params).get(callBack);
+        new OkRequest.Builder().url(url).params(params).post(callBack);
     }
 
     /**
@@ -90,14 +102,15 @@ public class NetApi extends UrlTool{
      * @param checkcode
      * @param callBack
      */
-    public static void registerUser(String imei,String user,String password,String checkcode,ResultCallBack<RegisterResult> callBack){
+    public static void registerUser(String imei,String user,String password,String checkcode,String nickname,ResultCallBack<RegisterResult> callBack){
         RequestParams params = RequestParams.newInstance()
                 .put("imei", imei)
+                .put("nickname",nickname)
                 .put("user",user)
                 .put("password", BedUtils.md5(password))
                 .put("checkcode",checkcode);
         String url = Service_Address+Register_Address;
-        new OkRequest.Builder().url(url).params(params).get(callBack);
+        new OkRequest.Builder().url(url).params(params).post(callBack);
     }
 
     /**
@@ -134,7 +147,7 @@ public class NetApi extends UrlTool{
 
 
     /**
-     * 绑定设备
+     * 绑定设备多人
      * @param user
      * @param devid
      * @param devtype
@@ -148,6 +161,24 @@ public class NetApi extends UrlTool{
                 .put("devtype",devtype) //区分Gps、wifi设备类型
                 .put("devname",devname); //区分智能床、智能锁、智能柜
         String url = Service_Address+BindDevice_Address;
+        new OkRequest.Builder().url(url).params(params).post(callBack);
+    }
+
+    /**
+     * 绑定设备多人
+     * @param user
+     * @param devid
+     * @param devtype
+     * @param callBack
+     */
+    public static void bindUserSignle(String user, String devid,String devname, String devtype,String cstname, ResultCallBack<BindUserDeviceResult> callBack){
+        RequestParams params = RequestParams.newInstance()
+                .put("user",user)
+                .put("devid",devid)
+                .put("cstname",cstname)
+                .put("devtype",devtype) //区分Gps、wifi设备类型
+                .put("devname",devname); //区分智能床、智能锁、智能柜
+        String url = Service_Address+BindDevice_Signle;
         new OkRequest.Builder().url(url).params(params).post(callBack);
     }
 
@@ -192,6 +223,14 @@ public class NetApi extends UrlTool{
                 .put("devtype",devtype)
                 .put("cstname",cstname);
         String url = Service_Address+ChengeDeviceInfo_Address;
+        new OkRequest.Builder().url(url).params(params).post(callBack);
+    }
+
+    public static void changeUserInfo(String user, String nickName, ResultCallBack<UpdateUserInfoResult> callBack){
+        RequestParams params = RequestParams.newInstance()
+                .put("user",user)
+                .put("nickname",nickName);
+        String url = Service_Address+Change_User_Info_Address;
         new OkRequest.Builder().url(url).params(params).post(callBack);
     }
 }

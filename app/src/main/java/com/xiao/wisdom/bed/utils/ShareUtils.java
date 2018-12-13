@@ -49,14 +49,17 @@ public class ShareUtils {
     }
 
 
-    public void saveUser(String user,String password){
-        sharedPreferences.edit().putString("user_",user).putString("password_",password).commit();
+    public void saveUser(String user,String password,String nickname){
+        sharedPreferences.edit().putString("user_",user).putString("password_",password).putString("nickname_",nickname).commit();
     }
     public String getUser(){
         return sharedPreferences.getString("user_","");
     }
     public String getPassword(){
         return sharedPreferences.getString("password_","");
+    }
+    public String getNickname(){
+        return sharedPreferences.getString("nickname_","");
     }
 
 

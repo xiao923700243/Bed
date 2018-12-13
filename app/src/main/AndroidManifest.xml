@@ -43,6 +43,9 @@
             android:windowSoftInputMode="adjustUnspecified|stateHidden"
             ></activity>
         <activity android:name=".ui.activity.InstructionsActivity" />
+        <activity android:name=".ui.activity.AboutActivity" />
+        <activity android:name=".ui.activity.UpdateUserInfoActivity"></activity>
+        <activity android:name=".ui.activity.HardwareActivity" />
 
         <service android:name=".service.BedService"></service>
     </application>

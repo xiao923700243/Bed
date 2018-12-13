@@ -30,9 +30,11 @@
     <string name="home_xml_error_text_msg">No device added</string>
 
     <!-- Menu List -->
-    <string name="menu_list_1">Reset Password</string>
-    <string name="menu_list_2">App tutorial</string>
-    <string name="menu_list_3">Sign out</string>
+    <string name="menu_list_1">Reset password</string>
+    <string name="menu_list_2">Hardware instructions</string>
+    <string name="menu_list_3">Software instructions</string>
+    <string name="menu_list_4">About us</string>
+    <string name="menu_list_5">Logout</string>
 
     <!-- ApSettingActivity -->
     <string name="ap_activity_conn_msg">Connecting device WIFI...</string>
@@ -54,11 +56,11 @@
     <string name="ap_activity_config_password_number_msg">Trying the [_number] configuration password...</string>
     <string name="ap_activity_config_password_error">Failed to configure password, please try again</string>
     <string name="ap_activity_device_online_success">The device went online successfully.</string>
-    <string name="ap_activity_device_online_error">The device failed to go online. Please confirm that the device has been switched to the network setting state, and confirm that the WIFI name and password are correct, then please try again!</string>
+    <string name="ap_activity_device_online_error">Device binding failed. Make sure that the device has been switched to the network settings and that the WIFI name and password are correct. Then try again!</string>
     <string name="ap_activity_device_online_error_msg">Please confirm that the device has been switched to the network settings state and confirm that the WIFI name and password are correct!</string>
-    <string name="ap_activity_no_search_wifi_msg">Device WIFI not found, please try again</string>
+    <string name="ap_activity_no_search_wifi_msg">No device WIFI was found. Please try to connect manually!</string>
     <string name="ap_activity_connect_wifi_success">Connected device WIFI successfully</string>
-    <string name="ap_activity_connect_wifi_error">Fail to connect to device WIFI, please try again</string>
+    <string name="ap_activity_connect_wifi_error">Connection device WIFI failed, please try to connect manually</string>
     <string name="ap_activity_open_wifi_msg">Opening WIFI...</string>
     <string name="ap_activity_search_wifi_msg">Looking for device WIFI...</string>
     <string name="ap_activity_connect_wifi_msg">Connecting device WIFI...</string>
@@ -72,7 +74,7 @@
     <string name="ap_xml_wifi_password_edittext_hiht_msg">Please enter your home WiFi password</string>
     <string name="ap_xml_device_status_msg">Turn on the power and confirm that the device is in the standby state and the green light is on. Press the upper right corner to switch WiFi, select hewei</string>
     <string name="ap_xml_device_lamp_on_msg">Green light is on</string>
-    <string name="ap_xml_next_msg">Next</string>
+    <string name="ap_xml_next_msg">Binding</string>
 
     <!-- BedDetailsActivity -->
     <string name="details_activity_auto_calibration_msg">Pressure correction</string>
@@ -90,8 +92,8 @@
     <string name="details_unbind_error_msg">Untie failed, error reason: binding relationship does not exist</string>
     <string name="details_xml_left_menu">Back</string>
     <string name="details_xml_title">Device details</string>
-    <string name="details_xml_right_menu">Debugging</string>
-    <string name="details_xml_device_info_sn_msg">Equipment SN number</string>
+    <string name="details_xml_right_menu">Settings</string>
+    <string name="details_xml_device_info_sn_msg">Device number</string>
     <string name="details_xml_device_info_name_msg">Device name</string>
     <string name="details_xml_device_info_nickname_msg">Please enter the device nickname</string>
     <string name="details_xml_device_temper_msg">temperature</string>
@@ -101,11 +103,19 @@
     <string name="details_activity_input_null_error_msg">Please enter your password</string>
     <string name="details_activity_input_error_msg">Password verification failed, please try again</string>
 
+    <!-- InstructionsActivity -->
+    <string name="is_xml_left_menu">Back</string>
+    <string name="is_xml_title_msg">Software instructions</string>
+
+    <!-- InstructionsActivity -->
+    <string name="hwa_xml_left_menu">Back</string>
+    <string name="hwa_xml_title_msg">Hardware instructions</string>
+
     <!-- BindActivity -->
     <string name="bind_activity_smartbed_msg">Smart Bed</string>
     <string name="bind_activity_smartlock_msg">Smart Lock</string>
     <string name="bind_activity_smartcabinet_msg">Smart Cabinet</string>
-    <string name="bind_activity_device_sn_input_error_msg">Please enter the device SN number</string>
+    <string name="bind_activity_device_sn_input_error_msg">Please enter the device number</string>
     <string name="bind_activity_device_nickname_input_error_msg">Please enter a device name</string>
     <string name="bind_activity_device_name_input_error_msg">Please select a device type</string>
     <string name="bind_activity_device_type_input_error_msg">Please select the device communication method</string>
@@ -114,7 +124,7 @@
     <string name="bind_activity_bind_error_msg">Binding failed, error message: device has been bound</string>
     <string name="bind_xml_left_menu">Back</string>
     <string name="bind_xml_title">Add device</string>
-    <string name="bind_xml_device_sn_text_msg">Equipment SN number</string>
+    <string name="bind_xml_device_sn_text_msg">Device number</string>
     <string name="bind_xml_device_sn_hiht_msg">Please enter the device SN number</string>
     <string name="bind_xml_device_cstname_text_msg">Device name</string>
     <string name="bind_xml_device_cstname_hiht_msg">Please enter a device name</string>
@@ -211,4 +221,86 @@
     <string name="debug_activity_lifetime_val_error2_msg">Please enter a valid interval</string>
     <string name="debug_activity_lifetime_val_error3_msg">Please end the motor life test task first.</string>
     <string name="debug_activity_lifetime_val_error4_msg">Please start the motor life test task first.</string>
+
+    <string name="activity_login_account_checkbox_text">Remember account</string>
+    <string name="activity_login_password_checkbox_text">Remember password</string>
+    <string name="activity_login_auto_checkbox_text">Auto Logon</string>
+    <string name="activity_about_title">About Us</string>
+    <string name="scan_activity_check_msg">Waiting</string>
+    <string name="scan_activity_error_1_msg">Please re-scan the QR code</string>
+    <string name="scan_activity_error_4_msg">The device has been bound</string>
+    <string name="bind_activity_device_layout_title">Device information</string>
+    <string name="bind_activity_ap_layout_title">Family hotspot</string>
+    <string name="bind_activity_bind_message_1">Configuring...</string>
+    <string name="bind_activity_bind_sunccess_msg">Binding success</string>
+
+    <string name="details_settings_menu_1_title">Automatic load correction</string>
+    <string name="details_send_auto_sunccess_msg">Automatic Load Correction Request Successful</string>
+    <string name="details_send_auto_error_1_msg">Automatic Load Correction Request Failed: Unbound Device</string>
+    <string name="details_send_auto_error_2_msg">Automatic Load Correction Request Failed: Equipment Offline</string>
+
+    <string name="details_settings_menu_2_title">Switching forward and reverse</string>
+    <string name="details_send_convert_sunccess_msg">Switching forward and backward requests succeeded</string>
+    <string name="details_send_convert_error_1_msg">Switching forward and backward requests failed: the device was not bound</string>
+    <string name="details_send_convert_error_2_msg">Switching Forward and Reverse Request Failed: Device Offline</string>
+
+    <string name="details_settings_menu_3_title">Pressure setting</string>
+    <string name="details_send_pressure_sunccess_msg">Successful Pressure Value Setting</string>
+    <string name="details_send_pressure_error_1_msg">Pressure setting failed: unbound device</string>
+    <string name="details_send_pressure_error_2_msg">Failure of Pressure Value Setting: Equipment Offline</string>
+
+    <string name="dialog_pressure_input_hint_msg">Please enter the pressure value for distribution (160-720)</string>
+    <string name="dialog_pressure_input_title_msg">Pressure value distribution</string>
+    <string name="dialog_pressure_input_error_1_msg">Please input pressure value.</string>
+    <string name="dialog_pressure_input_error_2_msg">Please enter the correct pressure value.</string>
+    <string name="dialog_auto_title_msg">Tips</string>
+    <string name="dialog_auto_msg">Automatic load correction is under way. The equipment can run one round trip automatically. No other operation is required during this period.</string>
+
+    <string name="debug_activity_pressure_msg">Pressure configuration</string>
+    <string name="debug_activity_pressure_value_msg">Setting of pressure value:</string>
+    <string name="debug_activity_pressure_hint_msg">Range 160-720, default 400</string>
+    <string name="debug_activity_pressure_error_1_msg">Please input pressure value.</string>
+    <string name="debug_activity_pressure_error_2_msg">Please enter the correct pressure value.</string>
+
+    <string name="debug_activity_load_value_msg">Load value settings:</string>
+    <string name="debug_activity_load_hint_msg">Range 1200-2400, default 2100</string>
+    <string name="debug_activity_load_error_1_msg">Please input load value.</string>
+    <string name="debug_activity_load_error_2_msg">Please enter the correct load value.</string>
+
+    <string name="debug_activity_auto_msg">Automatic load correction</string>
+
+    <string name="debug_activity_lifetime_msg">Life allocation</string>
+    <string name="debug_activity_frequency_value_msg">Life cycle settings:</string>
+    <string name="debug_activity_frequency_hint_msg">Range 0-10000, default 0</string>
+    <string name="debug_activity_frequency_error_1_msg">Please enter the number of life cycles</string>
+    <string name="debug_activity_frequency_error_2_msg">Please enter the correct number of life cycles</string>
+
+    <string name="debug_activity_interval_value_msg">Life interval setting:</string>
+    <string name="debug_activity_interval_hint_msg">Range 1-10 minutes, default 5 minutes</string>
+    <string name="debug_activity_interval_error_1_msg">Please enter the number of life cycles</string>
+    <string name="debug_activity_interval_error_2_msg">Please enter the correct number of life cycles</string>
+
+    <string name="debug_activity_lifetime_start_msg">Life testing begins</string>
+    <string name="debug_activity_lifetime_end_msg">End of life test</string>
+    <string name="debuf_activity_lifetime_test_state_msg">Test status:</string>
+    <string name="debuf_activity_lifetime_test_count_msg">Test number:</string>
+    <string name="debuf_activity_lifetime_test_time_msg">Test time:</string>
+
+    <string name="debug_activity_convert_msg">Positive inversion</string>
+    <string name="debug_activity_convert_text_msg">Forward and reverse handover</string>
+
+    <string name="login_register_quick_button_text">Quick registration</string>
+    <string name="login_register_quick_error_1_text">login has failed</string>
+    <string name="login_register_quick_msg">Registered...</string>
+    <string name="dialog_register_quick_user_msg">Account:</string>
+    <string name="dialog_register_quick_password_msg">Password:</string>
+    <string name="dialog_regiser_quick_login_msg">quick logon</string>
+    <string name="homeadapter_error_msg">Please unlock first.</string>
+    <string name="debug_activity_life_test_status_1_msg">Being tested</string>
+    <string name="debug_activity_life_test_status_2_msg">Test stop</string>
+    <string name="register_activity_nickname_hint_msg">Please enter nickname.</string>
+    <string name="register_activity_nickname_error_msg">Please enter a nickname of less than 12 digits.</string>
+    <string name="update_userinfo_activity_title_msg">Modify personal information</string>
+    <string name="update_userinfo_activity_success_msg">Modified success</string>
+    <string name="debug_activity_life_time_ms_msg"> S</string>
 </resources>
