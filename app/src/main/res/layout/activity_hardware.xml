@@ -43,19 +43,19 @@
             android:layout_width="match_parent"
             android:layout_height="match_parent">
             <ImageView
-                android:src="@mipmap/page010"
+                android:id="@+id/page_20"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content" />
             <ImageView
-                android:src="@mipmap/page011"
+                android:id="@+id/page_21"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content" />
             <ImageView
-                android:src="@mipmap/page012"
+                android:id="@+id/page_22"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content" />
             <ImageView
-                android:src="@mipmap/page013"
+                android:id="@+id/page_23"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content" />
         </LinearLayout>

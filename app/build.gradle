@@ -3,7 +3,7 @@ apply plugin: 'org.greenrobot.greendao'
 
 
 def buildVersionName(){
-    return "2.1.5"
+    return "2.1.6"
 }
 
 android {
